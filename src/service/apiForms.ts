@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const apiForms = axios.create({
-  baseURL: import.meta.env.VITE_FORMS_CARREGAR_SOLICITACOES,
+  baseURL: import.meta.env.VITE_API_FORMS,
   timeout: 10000,
   headers: {
     'Content-Type': 'application/json',
@@ -17,7 +17,7 @@ apiForms.interceptors.request.use(config => {
 });
 
 export async function fetchOcorrencias() {
-  const response = await await apiForms.get('/solicitacoes');
+  const response = await await apiForms.get('/solicitacoes/');
   return response.data.results;
 }
 

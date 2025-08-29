@@ -12,16 +12,30 @@
   font-weight: bold;
 }
 
+.navbar button {
+  background-color: transparent;
+  align-items: center;
+  border: none;
+  display: flex;
+  gap: 8px;
+}
+
 .navbar-user {
   display: flex;
   align-items: center;
-  gap: 12px;
 }
 
 .navbar-user img {
   width: 40px;
   height: 40px;
   border-radius: 50%;
+  border: 1px solid #fff;
+}
+
+.lucide-chevron-down {
+  width: 20px;
+  height: 20px;
+  color: #fff;
 }
 
 .arrow {
