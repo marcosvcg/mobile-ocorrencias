@@ -27,7 +27,8 @@
 
 .dropdown-menu {
   position: absolute;
-  top: 55%;
+  overflow: hidden;
+  transform: translateY(6px);
   left: 0;
   width: 100%;
   background-color: white;

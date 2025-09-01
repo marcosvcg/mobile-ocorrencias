@@ -44,7 +44,7 @@ const FiltrarPorDropdown = ({ children }: Props) => {
           ))}
         </ul>
       )}
-      {children}
+      {selected !== "Filtrar por" && children}
     </div>
   );
 };

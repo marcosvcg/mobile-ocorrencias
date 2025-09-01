@@ -17,6 +17,12 @@
   margin-top: 8px;
 }
 
+.digite-sua-busca:focus {
+  outline: none;
+  border: 1px solid #5e5e5e;
+  box-shadow: none;
+}
+
 .filter-div button {
   padding: 10px;
   background-color: #0047FF;
