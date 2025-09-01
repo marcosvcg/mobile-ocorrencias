@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { fetchFotoCidadao } from "../service/apiSSO";
-import defaultIcon from "/public/default-avatar-icon.svg"
 
 const FotoCidadao = () => {
+    const defaultIcon = '/default-avatar-icon.svg';
+    
     const [fotoUrl, setFotoUrl] = useState<string>(defaultIcon);
     const [cidadaoPossuiFoto, setCidadaoPossuiFoto] = useState<boolean>(false);
 
