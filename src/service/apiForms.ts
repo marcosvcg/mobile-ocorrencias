@@ -17,7 +17,7 @@ apiForms.interceptors.request.use(config => {
 });
 
 export async function fetchOcorrencias() {
-  const response = await await apiForms.get('/solicitacoes/');
+  const response = await apiForms.get('/solicitacoes/');
   return response.data.results;
 }
 
