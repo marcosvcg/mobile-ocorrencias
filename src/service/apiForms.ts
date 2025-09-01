@@ -20,5 +20,3 @@ export async function fetchOcorrencias() {
   const response = await apiForms.get('/solicitacoes/');
   return response.data.results;
 }
-
-export default { fetchOcorrencias };

@@ -21,6 +21,21 @@
   transition: background-color 0.2s ease;
 }
 
+.nome {
+  color: #000;
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  text-align: start;
+  margin-bottom: 4px;
+}
+
+.cpf {
+  color: #333333;
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  text-align: start;
+}
+
 .user-info {
   display: flex;
   flex-direction: column;
