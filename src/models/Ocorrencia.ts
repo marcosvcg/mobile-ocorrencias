@@ -1,5 +1,3 @@
-// models/Ocorrencia.ts
-
 export interface Ocorrencia {
   id: number;
   protocolo: string;
