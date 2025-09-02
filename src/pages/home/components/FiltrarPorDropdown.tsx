@@ -1,42 +1,39 @@
-import { useState, type ReactNode } from 'react';
-import './css/FiltrarPorDropdown.css';
+import { filtroMap, type FiltroLabel } from "../../../models/Filtros";
+import { useState } from "react";
+import "./css/FiltrarPorDropdown.css";
 
 interface Props {
-  children: ReactNode;
+  filtroSelecionado: FiltroLabel;
+  setFiltroSelecionado: (option: string) => void;
+  busca: string;
+  setBusca: (value: string) => void;
 }
 
-const options = [
-  'Filtrar por',
-  'CPF',
-  'Protocolo',
-  'Situação',
-  'Serviço'
-];
+const options = Object.keys(filtroMap) as FiltroLabel[];
 
-const FiltrarPorDropdown = ({ children }: Props) => {
+const FiltrarPorDropdown = ({ filtroSelecionado, setFiltroSelecionado, busca, setBusca }: Props) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selected, setSelected] = useState('Filtrar por');
 
   const toggleDropdown = () => setIsOpen(!isOpen);
 
-  const handleSelect = (option: string) => {
-    setSelected(option);
+  const handleSelecionarFiltro = (option: string) => {
+    setFiltroSelecionado(option);
     setIsOpen(false);
   };
 
   return (
     <div className="filtrar-dropdown">
       <div className="dropdown-button" onClick={toggleDropdown}>
-        <span>{selected}</span>
-        <span className="arrow">{isOpen ? '▲' : '▼'}</span>
+        <span>{filtroSelecionado}</span>
+        <span className="arrow">{isOpen ? "▲" : "▼"}</span>
       </div>
 
       {isOpen && (
         <ul className="dropdown-menu">
-          {options.map(option => (
+          {options.map((option) => (
             <li
               key={option}
-              onClick={() => handleSelect(option)}
+              onClick={() => handleSelecionarFiltro(option)}
               className="dropdown-item"
             >
               {option}
@@ -44,7 +41,15 @@ const FiltrarPorDropdown = ({ children }: Props) => {
           ))}
         </ul>
       )}
-      {selected !== "Filtrar por" && children}
+      {filtroSelecionado !== "Filtrar por" && (
+        <input
+          className="digite-sua-busca"
+          type="text"
+          placeholder="Digite sua busca"
+          value={busca}
+          onChange={(e) => setBusca(e.target.value)}
+        />
+      )}
     </div>
   );
 };

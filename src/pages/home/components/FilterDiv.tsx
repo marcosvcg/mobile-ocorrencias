@@ -1,14 +1,30 @@
-import './css/FilterDiv.css';
+import type { FiltroLabel } from '../../../models/Filtros';
+import { useState } from 'react';
 import BuscarButton from './BuscarButton';
 import FiltrarPorDropdown from './FiltrarPorDropdown';
+import './css/FilterDiv.css';
 
-const FilterDiv = () => {
+interface Props {
+  onBuscar: (filtro: FiltroLabel, valor: string) => void;
+}
+
+const FilterDiv = ({ onBuscar }: Props) => {
+  const [filtroSelecionado, setFiltroSelecionado] = useState('Filtrar por');
+  const [busca, setBusca] = useState('');
+
   return (
     <div className="filter-div">
-      <FiltrarPorDropdown>
-        <input className="digite-sua-busca" type="text" placeholder="Digite sua busca" />
-      </FiltrarPorDropdown>
-      <BuscarButton/>
+      <FiltrarPorDropdown 
+        filtroSelecionado={filtroSelecionado}
+        setFiltroSelecionado={setFiltroSelecionado}
+        busca={busca}
+        setBusca={setBusca}
+      />
+      <BuscarButton
+        filtroSelecionado={filtroSelecionado}
+        busca={busca}
+        onBuscar={onBuscar}
+      />
     </div>
   );
 };

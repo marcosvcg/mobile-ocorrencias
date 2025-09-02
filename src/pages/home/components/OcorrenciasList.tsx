@@ -1,22 +1,12 @@
-import { useEffect, useState } from "react";
-import { fetchOcorrencias } from "../../../service/apiForms";
 import type { Ocorrencia } from "../../../models/Ocorrencia";
 import OcorrenciaCard from "./OcorrenciaCard";
 
-const OcorrenciasList = () => {
-  const [ocorrencias, setOcorrencias] = useState<Ocorrencia[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+type Props = {
+  ocorrencias: Ocorrencia[];
+};
 
-  useEffect(() => {
-    fetchOcorrencias()
-      .then(setOcorrencias)
-      .catch(() => setError("Erro ao carregar"))
-      .finally(() => setLoading(false));
-  }, []);
-
-  if (loading) return <p>Carregando...</p>;
-  if (error) return <p>{error}</p>;
+const OcorrenciasList = ({ ocorrencias }: Props) => {
+  if (!ocorrencias.length) return <p>Nenhuma ocorrência encontrada.</p>;
 
   return (
     <div className="ocorrencias-list">
