@@ -22,32 +22,24 @@ export async function fetchOcorrencias() {
 }
 
 export async function fetchOcorrenciasPorPagina(
-  pagina: number,
+  page: number = 1
 ) {
-  const response = await apiForms.get(`/solicitacoes/?page=${pagina}`);
+  const response = await apiForms.get(`/solicitacoes/?page=${page}`);
   return response.data.results;
 }
 
 export async function fetchOcorrenciasPorFiltro(
   filtro: string,
-  busca: string
+  busca: string,
+  page: number = 1
 ) {
   // ----------------------------------------------------------------------------------------
   // Repensar a logica das requisicoes para incluir uma forma melhor de filtrar pelo status!!
   // ----------------------------------------------------------------------------------------
   if (filtro === "status") {
-    const response = await apiForms.get(`/solicitacoes/?${filtro}=${busca}`);
+    const response = await apiForms.get(`/solicitacoes/?${filtro}=${busca}&page=${page}`);
     return response.data.results;
   }
-  const response = await apiForms.get(`/solicitacoes/?filtro=${filtro}&busca=${busca}`);
-  return response.data.results;
-}
-
-export async function fetchOcorrenciasComParametros(
-  pagina: number,
-  filtro: string,
-  busca: string
-) {
-  const response = await apiForms.get(`/solicitacoes/?page=${pagina}&filtro=${filtro}&busca=${busca}`);
+  const response = await apiForms.get(`/solicitacoes/?filtro=${filtro}&busca=${busca}&page=${page}`);
   return response.data.results;
 }
