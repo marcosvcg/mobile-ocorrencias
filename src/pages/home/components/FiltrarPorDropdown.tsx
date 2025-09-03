@@ -23,7 +23,7 @@ const FiltrarPorDropdown = ({ filtroSelecionado, setFiltroSelecionado, busca, se
 
   return (
     <div className="filtrar-dropdown">
-      <div className="dropdown-button" onClick={toggleDropdown}>
+      <div className="dropdown-button" onClick={toggleDropdown} onMouseOut={() => setIsOpen(false)}>
         <span>{filtroSelecionado}</span>
         <span className="arrow">{isOpen ? "▲" : "▼"}</span>
       </div>

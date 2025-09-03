@@ -1,7 +1,7 @@
 import FilterDiv from "./components/FilterDiv";
 import NavBar from "../../components/NavBar";
 import OcorrenciasList from "./components/OcorrenciasList";
-import { fetchOcorrencias, fetchOcorrenciasPorFiltro } from "../../service/apiForms";
+import { fetchOcorrencias, fetchOcorrenciasPorFiltros } from "../../service/apiForms";
 import type { FiltroLabel } from "../../models/Filtros";
 import type { Ocorrencia } from "../../models/Ocorrencia";
 import { useEffect, useState } from "react";
@@ -20,26 +20,27 @@ function HomePage() {
 
   // Busca inicial
   useEffect(() => {
-    obterOcorrencias()
+    obterOcorrencias();
   }, []);
 
-// Função que será chamada pelo botão "Buscar"
-  const buscarOcorrencias = (filtro: FiltroLabel, valor: string) => {
-    if (!valor.trim()) return obterOcorrencias();
+// Função que será chamada pelo botão "Buscar" e pela seleção de status
+  const buscarOcorrencias = (status: string, filtro?: FiltroLabel, valor?: string) => {
+    if (valor && !valor.trim()) return obterOcorrencias();
 
     setLoading(true);
     setError(null);
 
-    fetchOcorrenciasPorFiltro(filtro, valor)
+    fetchOcorrenciasPorFiltros(status, filtro, valor)
       .then(setOcorrencias)
       .catch(() => setError("Erro ao buscar ocorrências"))
       .finally(() => setLoading(false));
+      console.log(`-Resultado: ${status} - ${filtro} - ${valor}`); // APAGAR!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   };
 
   return (
     <>
       <NavBar />
-      <FilterDiv onBuscar={buscarOcorrencias} />
+      <FilterDiv onBuscar={buscarOcorrencias} onStatusSelecionado={buscarOcorrencias}/>
       {loading && <p>Carregando ocorrências...</p>}
       {error && <p>{error}</p>}
       {!loading && !error && <OcorrenciasList ocorrencias={ocorrencias} />}

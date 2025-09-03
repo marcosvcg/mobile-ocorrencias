@@ -17,7 +17,7 @@ apiForms.interceptors.request.use(config => {
 });
 
 export async function fetchOcorrencias() {
-  const response = await apiForms.get('/solicitacoes/');
+  const response = await apiForms.get('/solicitacoes/?status=Solicitado');
   return response.data.results;
 }
 
@@ -28,18 +28,12 @@ export async function fetchOcorrenciasPorPagina(
   return response.data.results;
 }
 
-export async function fetchOcorrenciasPorFiltro(
-  filtro: string,
-  busca: string,
+export async function fetchOcorrenciasPorFiltros(
+  status: string = 'Solicitado',
+  filtro?: string,
+  busca?: string,
   page: number = 1
 ) {
-  // ----------------------------------------------------------------------------------------
-  // Repensar a logica das requisicoes para incluir uma forma melhor de filtrar pelo status!!
-  // ----------------------------------------------------------------------------------------
-  if (filtro === "status") {
-    const response = await apiForms.get(`/solicitacoes/?${filtro}=${busca}&page=${page}`);
-    return response.data.results;
-  }
-  const response = await apiForms.get(`/solicitacoes/?filtro=${filtro}&busca=${busca}&page=${page}`);
+  const response = await apiForms.get(`/solicitacoes/?status=${status}&filtro=${filtro}&busca=${busca}&page=${page}`);
   return response.data.results;
 }
