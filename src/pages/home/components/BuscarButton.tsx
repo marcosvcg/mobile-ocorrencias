@@ -2,16 +2,16 @@ import { filtroMap, type FiltroLabel } from "../../../models/Filtros";
 
 interface Props {
   filtroSelecionado: FiltroLabel;
+  statusSelecionado: string;
   busca: string;
-  status: string;
   onBuscar: (status: string, filtro: FiltroLabel, valor: string) => void;
 }
 
-const BuscarButton = ({ filtroSelecionado, busca, status, onBuscar }: Props) => {
+const BuscarButton = ({ filtroSelecionado, busca, statusSelecionado, onBuscar }: Props) => {
   const filtro = filtroMap[filtroSelecionado];
 
   const handleClick = () => {
-    onBuscar(status, filtro, busca);
+    onBuscar(statusSelecionado, filtro, busca);
   }
 
   return <button disabled={filtroSelecionado === "Filtrar por"} onClick={handleClick}>Buscar</button>

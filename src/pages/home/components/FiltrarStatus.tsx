@@ -7,24 +7,19 @@ interface Props {
   statusSelecionado: string;
   setStatusSelecionado: (status: string) => void;
   onStatusSelecionado: (status: string, filtro?: FiltroLabel, valor?: string) => void;
-  filtroSelecionado: FiltroLabel;
-  busca: string;
 }
 
 const status = statusArray;
 
-const FiltrarStatus = ({ statusSelecionado, filtroSelecionado, busca, setStatusSelecionado, onStatusSelecionado }: Props) => {
+const FiltrarStatus = ({ statusSelecionado, setStatusSelecionado, onStatusSelecionado }: Props) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleDropdown = () => setIsOpen(!isOpen);
 
   const handleSelecionarStatus = (status: string) => {
-    const filtroFinal = filtroSelecionado === "Filtrar por" ? undefined : filtroSelecionado;
-    const buscaFinal = !busca.trim() ? undefined : busca;
-
     setStatusSelecionado(status);
     setIsOpen(false);
-    onStatusSelecionado(status, filtroFinal, buscaFinal);
+    onStatusSelecionado(status);
   };
 
   return (

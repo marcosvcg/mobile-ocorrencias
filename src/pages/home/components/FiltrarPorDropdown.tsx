@@ -4,7 +4,7 @@ import "./css/FiltrarPorDropdown.css";
 
 interface Props {
   filtroSelecionado: FiltroLabel;
-  setFiltroSelecionado: (option: string) => void;
+  setFiltroSelecionado: (option: FiltroLabel) => void;
   busca: string;
   setBusca: (value: string) => void;
 }

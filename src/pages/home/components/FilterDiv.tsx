@@ -19,8 +19,6 @@ const FilterDiv = ({ onBuscar, onStatusSelecionado }: Props) => {
     <div className="filter-div">
       <FiltrarStatus 
         statusSelecionado={statusSelecionado}
-        filtroSelecionado={filtroSelecionado}
-        busca={busca}
         setStatusSelecionado={setStatusSelecionado}
         onStatusSelecionado={onStatusSelecionado}
       />
@@ -32,8 +30,8 @@ const FilterDiv = ({ onBuscar, onStatusSelecionado }: Props) => {
       />
       <BuscarButton
         filtroSelecionado={filtroSelecionado}
+        statusSelecionado={statusSelecionado}
         busca={busca}
-        status={statusSelecionado}
         onBuscar={onBuscar}
       />
     </div>
