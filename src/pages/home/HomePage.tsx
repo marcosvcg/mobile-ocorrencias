@@ -34,7 +34,6 @@ function HomePage() {
       .then(setOcorrencias)
       .catch(() => setError("Erro ao buscar ocorrências"))
       .finally(() => setLoading(false));
-      console.log(`-Resultado: ${status} - ${filtro} - ${valor}`); // APAGAR!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   };
 
   return (
