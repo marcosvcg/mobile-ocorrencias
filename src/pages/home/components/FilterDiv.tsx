@@ -1,20 +1,30 @@
 import type { FiltroLabel } from '../../../models/Filtros';
-import { useState } from 'react';
 import BuscarButton from './BuscarButton';
 import FiltrarPorDropdown from './FiltrarPorDropdown';
 import './css/FilterDiv.css';
 import FiltrarStatus from './FiltrarStatus';
 
 interface Props {
-  onBuscar: (filtro: FiltroLabel, valor: string) => void;
-  onStatusSelecionado: (status: string, filtro?: FiltroLabel, valor?: string) => void;
+  statusSelecionado: string;
+  setStatusSelecionado: (status: string) => void;
+  filtroSelecionado: FiltroLabel;
+  setFiltroSelecionado: (filtro: FiltroLabel) => void;
+  busca: string;
+  setBusca: (valor: string) => void;
+  onBuscar: (filtro: FiltroLabel, busca: string) => void;
+  onStatusSelecionado: (status: string) => void;
 }
 
-const FilterDiv = ({ onBuscar, onStatusSelecionado }: Props) => {
-  const [statusSelecionado, setStatusSelecionado] = useState('Solicitado');
-  const [filtroSelecionado, setFiltroSelecionado] = useState('Filtrar por');
-  const [busca, setBusca] = useState('');
-
+const FilterDiv = ({
+  statusSelecionado,
+  setStatusSelecionado,
+  filtroSelecionado,
+  setFiltroSelecionado,
+  busca,
+  setBusca,
+  onBuscar,
+  onStatusSelecionado,
+}: Props) => {
   return (
     <div className="filter-div">
       <FiltrarStatus 
@@ -37,5 +47,6 @@ const FilterDiv = ({ onBuscar, onStatusSelecionado }: Props) => {
     </div>
   );
 };
+
 
 export default FilterDiv;

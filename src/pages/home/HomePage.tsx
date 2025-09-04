@@ -1,49 +1,76 @@
 import FilterDiv from "./components/FilterDiv";
 import NavBar from "../../components/NavBar";
 import OcorrenciasList from "./components/OcorrenciasList";
-import { fetchOcorrencias, fetchOcorrenciasPorFiltros } from "../../service/apiForms";
-import type { FiltroLabel } from "../../models/Filtros";
+import { fetchOcorrenciasPorFiltros } from "../../service/apiForms";
+import { type FiltroLabel } from "../../models/Filtros";
 import type { Ocorrencia } from "../../models/Ocorrencia";
 import { useEffect, useState } from "react";
+import Pagination from "./components/Pagination";
 
 function HomePage() {
   const [ocorrencias, setOcorrencias] = useState<Ocorrencia[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [pageCount, setPageCount] = useState(0);
+  const [currentPage, setCurrentPage] = useState(1);
 
-  const obterOcorrencias = () => {
-    fetchOcorrencias()
-      .then(setOcorrencias)
-      .catch(() => setError("Erro ao carregar ocorrências"))
-      .finally(() => setLoading(false));
-  }
+  const [statusSelecionado, setStatusSelecionado] = useState('Solicitado');
+  const [filtroSelecionado, setFiltroSelecionado] = useState<FiltroLabel>('Filtrar por');
+  const [busca, setBusca] = useState('');
 
-  // Busca inicial
-  useEffect(() => {
-    obterOcorrencias();
-  }, []);
-
-// Função que será chamada pelo botão "Buscar" e pela seleção de status
-  const buscarOcorrencias = (status: string, filtro?: FiltroLabel, valor?: string) => {
-    if (valor && !valor.trim()) return obterOcorrencias();
-
+  const obterOcorrencias = (
+    status: string = statusSelecionado,
+    filtro: FiltroLabel = filtroSelecionado,
+    valor?: string,
+    page?: number
+  ) => {
     setLoading(true);
     setError(null);
 
-    fetchOcorrenciasPorFiltros(status, filtro, valor)
-      .then(setOcorrencias)
+    fetchOcorrenciasPorFiltros(status, filtro, valor, page)
+      .then(({ results, total_pages }) => {
+        setOcorrencias(results);
+        setPageCount(total_pages);
+      })
       .catch(() => setError("Erro ao buscar ocorrências"))
       .finally(() => setLoading(false));
-      console.log(status, filtro, valor)
   };
+
+  useEffect(() => {
+    obterOcorrencias(statusSelecionado, filtroSelecionado, busca, currentPage);
+  }, [currentPage]);
 
   return (
     <>
       <NavBar />
-      <FilterDiv onBuscar={buscarOcorrencias} onStatusSelecionado={buscarOcorrencias}/>
+      <FilterDiv
+        statusSelecionado={statusSelecionado}
+        setStatusSelecionado={setStatusSelecionado}
+        filtroSelecionado={filtroSelecionado}
+        setFiltroSelecionado={setFiltroSelecionado}
+        busca={busca}
+        setBusca={setBusca}
+        onBuscar={(filtroSelecionado, busca) => {
+          setCurrentPage(1); // resetar para primeira página
+          setBusca(busca);
+          obterOcorrencias(statusSelecionado, filtroSelecionado, busca);
+        }}
+        onStatusSelecionado={(status) => {
+          setCurrentPage(1); // resetar para primeira página
+          setStatusSelecionado(status);
+          obterOcorrencias(status, filtroSelecionado, busca);
+        }}
+      />
       {loading && <p>Carregando ocorrências...</p>}
       {error && <p>{error}</p>}
       {!loading && !error && <OcorrenciasList ocorrencias={ocorrencias} />}
+      <Pagination
+        pageCount={pageCount}
+        currentPage={currentPage - 1}
+        handlePageClick={(event) => {
+          setCurrentPage(event.selected + 1);
+        }}
+      />
     </>
   );
 }

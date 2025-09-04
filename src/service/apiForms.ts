@@ -16,24 +16,14 @@ apiForms.interceptors.request.use(config => {
   return config;
 });
 
-export async function fetchOcorrencias() {
-  const response = await apiForms.get('/solicitacoes/?status=Solicitado');
-  return response.data.results;
-}
-
-export async function fetchOcorrenciasPorPagina(
-  page: number = 1
-) {
-  const response = await apiForms.get(`/solicitacoes/?page=${page}`);
-  return response.data.results;
-}
-
 export async function fetchOcorrenciasPorFiltros(
-  status: string = 'Solicitado',
+  status: string,
   filtro?: string,
   busca?: string,
   page: number = 1
 ) {
   const response = await apiForms.get(`/solicitacoes/?status=${status}&filtro=${filtro}&busca=${busca}&page=${page}`);
-  return response.data.results;
+  const { results, total_pages } = response.data;
+  console.log("-Resultado: " + status + ' ' + filtro + ' ' + busca + ' ' + page)
+  return { results, total_pages };
 }
