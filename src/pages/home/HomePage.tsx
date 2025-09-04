@@ -2,7 +2,7 @@ import FilterDiv from "./components/FilterDiv";
 import NavBar from "../../components/NavBar";
 import OcorrenciasList from "./components/OcorrenciasList";
 import { fetchOcorrenciasPorFiltros } from "../../service/apiForms";
-import { type FiltroLabel } from "../../models/Filtros";
+import { filtroMap, type FiltroLabel } from "../../models/Filtros";
 import type { Ocorrencia } from "../../models/Ocorrencia";
 import { useEffect, useState } from "react";
 import Pagination from "./components/Pagination";
@@ -20,7 +20,7 @@ function HomePage() {
 
   const obterOcorrencias = (
     status: string = statusSelecionado,
-    filtro: FiltroLabel = filtroSelecionado,
+    filtro?: FiltroLabel,
     valor?: string,
     page?: number
   ) => {
@@ -50,7 +50,7 @@ function HomePage() {
         setFiltroSelecionado={setFiltroSelecionado}
         busca={busca}
         setBusca={setBusca}
-        onBuscar={(filtroSelecionado, busca) => {
+        onBuscar={(busca) => {
           setCurrentPage(1); // resetar para primeira página
           setBusca(busca);
           obterOcorrencias(statusSelecionado, filtroSelecionado, busca);

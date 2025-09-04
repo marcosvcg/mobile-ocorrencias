@@ -11,7 +11,7 @@ interface Props {
   setFiltroSelecionado: (filtro: FiltroLabel) => void;
   busca: string;
   setBusca: (valor: string) => void;
-  onBuscar: (filtro: FiltroLabel, busca: string) => void;
+  onBuscar: (busca: string) => void;
   onStatusSelecionado: (status: string) => void;
 }
 
