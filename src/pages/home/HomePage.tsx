@@ -37,7 +37,7 @@ function HomePage() {
   };
 
   useEffect(() => {
-    obterOcorrencias(statusSelecionado, filtroSelecionado, busca, currentPage);
+    obterOcorrencias(statusSelecionado, filtroMap[filtroSelecionado], busca, currentPage);
   }, [currentPage]);
 
   return (
@@ -53,12 +53,12 @@ function HomePage() {
         onBuscar={(busca) => {
           setCurrentPage(1); // resetar para primeira página
           setBusca(busca);
-          obterOcorrencias(statusSelecionado, filtroSelecionado, busca);
+          obterOcorrencias(statusSelecionado, filtroMap[filtroSelecionado], busca);
         }}
         onStatusSelecionado={(status) => {
           setCurrentPage(1); // resetar para primeira página
           setStatusSelecionado(status);
-          obterOcorrencias(status, filtroSelecionado, busca);
+          obterOcorrencias(status, filtroMap[filtroSelecionado], busca);
         }}
       />
       {loading && <p>Carregando ocorrências...</p>}
