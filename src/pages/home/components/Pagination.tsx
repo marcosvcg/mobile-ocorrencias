@@ -1,5 +1,5 @@
 import ReactPaginate from "react-paginate"; // dependencia externa!
-//import "./css/Pagination.css"
+import "./css/Pagination.css"
 
 interface Props {
     pageCount: number;
@@ -9,7 +9,7 @@ interface Props {
 
 function Pagination({ pageCount, currentPage, handlePageClick }: Props) {
   return (
-    <>
+    <nav>
       <ReactPaginate
         previousLabel="<"
         nextLabel=">"
@@ -31,7 +31,7 @@ function Pagination({ pageCount, currentPage, handlePageClick }: Props) {
         activeClassName="active"
         renderOnZeroPageCount={null}
       />
-    </>
+    </nav>
   );
 }
 

@@ -1,5 +1,6 @@
 import type { Ocorrencia } from "../../../models/Ocorrencia";
 import OcorrenciaCard from "./OcorrenciaCard";
+import "./css/OcorrenciasList.css";
 
 type Props = {
   ocorrencias: Ocorrencia[];
