@@ -1,7 +1,7 @@
 .informacoes-ocorrencia {
   background: white;
   width: 90%;
-  padding: 12px;
+  padding: 4vw;
   margin-top: 6vw;
   margin-right: auto;
   margin-left: auto;
@@ -10,7 +10,7 @@
 
 .informacoes-ocorrencia h3 {
     text-align: center;
-    margin-bottom: 10px;
+    margin-bottom: 2vw;
 }
 
 .identificador {
