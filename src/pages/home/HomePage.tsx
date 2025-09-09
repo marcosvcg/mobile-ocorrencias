@@ -33,7 +33,7 @@ function HomePage() {
         setOcorrencias(results);
         setPageCount(total_pages);
       })
-      .catch(() => setError("Erro ao buscar ocorrências"))
+      .catch(() => setError("Erro ao buscar ocorrências")) // redirecionar para login do govbr?
       .finally(() => setLoading(false));
   };
 
@@ -68,7 +68,7 @@ function HomePage() {
       {!loading && !error && 
       <OcorrenciasList ocorrencias={ocorrencias} />}
       
-      {!loading && !error && 
+      {!loading && !error && ocorrencias.length > 0 &&
       <Pagination
         pageCount={pageCount}
         currentPage={currentPage - 1}

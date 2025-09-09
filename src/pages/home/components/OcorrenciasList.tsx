@@ -1,5 +1,6 @@
 import type { Ocorrencia } from "../../../models/Ocorrencia";
 import OcorrenciaCard from "./OcorrenciaCard";
+import OcorrenciaHandler from "./OcorrenciaHandler";
 import "./css/OcorrenciasList.css";
 
 type Props = {
@@ -7,7 +8,7 @@ type Props = {
 };
 
 const OcorrenciasList = ({ ocorrencias }: Props) => {
-  if (!ocorrencias.length) return <p>Nenhuma ocorrência encontrada.</p>;
+  if (!ocorrencias.length) return <OcorrenciaHandler texto="Nenhuma ocorrência encontrada."/>;
 
   return (
     <div className="ocorrencias-list">
