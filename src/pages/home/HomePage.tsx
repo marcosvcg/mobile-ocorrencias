@@ -6,6 +6,7 @@ import { filtroMap, type FiltroLabel } from "../../models/Filtros";
 import type { Ocorrencia } from "../../models/Ocorrencia";
 import { useEffect, useState } from "react";
 import Pagination from "./components/Pagination";
+import Spinner from "../../components/Spinner";
 
 function HomePage() {
   const [ocorrencias, setOcorrencias] = useState<Ocorrencia[]>([]);
@@ -61,16 +62,20 @@ function HomePage() {
           obterOcorrencias(status, filtroMap[filtroSelecionado], busca);
         }}
       />
-      {loading && <p>Carregando ocorrências...</p>}
+      {loading && <Spinner />}
       {error && <p>{error}</p>}
-      {!loading && !error && <OcorrenciasList ocorrencias={ocorrencias} />}
+
+      {!loading && !error && 
+      <OcorrenciasList ocorrencias={ocorrencias} />}
+      
+      {!loading && !error && 
       <Pagination
         pageCount={pageCount}
         currentPage={currentPage - 1}
         handlePageClick={(event) => {
           setCurrentPage(event.selected + 1);
         }}
-      />
+      />}
     </>
   );
 }
