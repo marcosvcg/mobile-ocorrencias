@@ -1,0 +1,18 @@
+.informacoes-ocorrencia {
+  background: white;
+  width: 90%;
+  padding: 12px;
+  margin-top: 6vw;
+  margin-right: auto;
+  margin-left: auto;
+  box-shadow: 0px 2px 5px rgba(0,0,0,0.1);
+}
+
+.informacoes-ocorrencia h3 {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.identificador {
+    word-break: break-all;
+}

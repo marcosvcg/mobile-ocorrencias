@@ -15,11 +15,12 @@ const OcorrenciasList = ({ ocorrencias }: Props) => {
       {ocorrencias.map((ocorrencia) => (
         <OcorrenciaCard
           key={ocorrencia.identificador}
+          identificador={ocorrencia.identificador}
           cpf={ocorrencia.cpf}
           status={ocorrencia.status}
           protocolo={ocorrencia.protocolo}
           created_at={ocorrencia.created_at}
-          flow={ocorrencia.flow}
+          servico_titulo={ocorrencia.servico_titulo}
         />
       ))}
     </div>

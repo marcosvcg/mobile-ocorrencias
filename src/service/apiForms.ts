@@ -27,3 +27,9 @@ export async function fetchOcorrenciasPorFiltros(
   console.log("-Resultado: " + status + ' ' + filtro + ' ' + busca + ' ' + page)
   return { results, total_pages };
 }
+
+export async function fetchDetalhesOcorrencia(identificador: string) {
+  const response = await apiForms.get(`/carregar_solicitacao?identificador=${identificador}`);
+  console.log("Detalhes da Ocorrência: \n" + response.data);
+  return response.data;
+}
