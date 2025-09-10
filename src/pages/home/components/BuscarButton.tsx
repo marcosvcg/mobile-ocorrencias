@@ -1,4 +1,4 @@
-import { filtroMap, type FiltroLabel } from "../../../models/Filtros";
+import { type FiltroLabel } from "../../../models/Filtros";
 
 interface Props {
   filtroSelecionado: FiltroLabel;
