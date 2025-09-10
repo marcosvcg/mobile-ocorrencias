@@ -1,4 +1,5 @@
 import axios from 'axios';
+import Cookies from 'js-cookie';
 
 const apiForms = axios.create({
   baseURL: import.meta.env.VITE_API_FORMS,
@@ -9,7 +10,7 @@ const apiForms = axios.create({
 });
 
 apiForms.interceptors.request.use(config => {
-  const token = import.meta.env.VITE_AUTH_TOKEN; // APENAS PARA TESTES, PUXAR TOKEN ATRAVÉS DE COOKIES HTTP-ONLY!
+  const token = Cookies.get('token');
   if (token) {
     config.headers.Authorization = `Bearer ${token}`;
   }

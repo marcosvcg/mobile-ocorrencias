@@ -1,4 +1,5 @@
 import axios from 'axios';
+import Cookies from 'js-cookie';
 
 const apiSSO = axios.create({
   baseURL: import.meta.env.VITE_API_SSO,
@@ -9,12 +10,48 @@ const apiSSO = axios.create({
 });
 
 apiSSO.interceptors.request.use(config => {
-  const token = import.meta.env.VITE_AUTH_TOKEN; // APENAS PARA TESTES, PUXAR TOKEN ATRAVÉS DE COOKIES HTTP-ONLY!
+  const token = Cookies.get('token');
   if (token) {
     config.headers.Authorization = `Bearer ${token}`;
   }
   return config;
 });
+
+/*
+apiSSO.interceptors.response.use(
+  response => response,
+  async error => {
+    if (error.response?.status === 401) {
+      window.location.href = import.meta.env.VITE_SSO_LOGOUT;
+    }
+    return Promise.reject(error);
+  }
+);
+*/
+
+export async function validarToken(code: string) {
+  const dados = {
+    redirect_uri: import.meta.env.VITE_REDIRECT_URI,
+    code: code,
+    client_id: import.meta.env.VITE_CLIENT_ID,
+    client_secret: import.meta.env.VITE_CLIENT_SECRET
+  };
+  
+  apiSSO.post('/validar/', dados)
+    .then(response => {
+      Cookies.set('token', response?.data?.access_token, { 
+        secure: false,
+        expires: 1
+      });
+    })
+}
+
+export async function checarToken(): Promise<boolean> {
+  if (Cookies.get('token')) {
+    return await apiSSO.get('/checar/');
+  }
+  return false;
+}
 
 export async function fetchFotoCidadao(): Promise<string | null> {
   try {

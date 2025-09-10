@@ -7,11 +7,11 @@ import type { Ocorrencia } from "../../models/Ocorrencia";
 import { useEffect, useState } from "react";
 import Pagination from "./components/Pagination";
 import Spinner from "../../components/Spinner";
+import { checarToken } from "../../service/apiSSO";
 
 function HomePage() {
   const [ocorrencias, setOcorrencias] = useState<Ocorrencia[]>([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
   const [pageCount, setPageCount] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -26,14 +26,16 @@ function HomePage() {
     page?: number
   ) => {
     setLoading(true);
-    setError(null);
 
     fetchOcorrenciasPorFiltros(status, filtro, valor, page)
       .then(({ results, total_pages }) => {
         setOcorrencias(results);
         setPageCount(total_pages);
       })
-      .catch(() => setError("Erro ao buscar ocorrências")) // redirecionar para login do govbr?
+      .catch(async () => {
+        const tokenValido = await checarToken();
+        if(!tokenValido) window.location.href = `${import.meta.env.VITE_SSO_LOGOUT}`
+      })
       .finally(() => setLoading(false));
   };
 
@@ -63,12 +65,11 @@ function HomePage() {
         }}
       />
       {loading && <Spinner />}
-      {error && <p>{error}</p>}
 
-      {!loading && !error && 
+      {!loading && 
       <OcorrenciasList ocorrencias={ocorrencias} />}
       
-      {!loading && !error && ocorrencias.length > 0 &&
+      {!loading && ocorrencias.length > 0 &&
       <Pagination
         pageCount={pageCount}
         currentPage={currentPage - 1}
