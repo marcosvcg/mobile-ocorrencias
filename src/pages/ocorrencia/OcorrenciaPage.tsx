@@ -5,6 +5,11 @@ import { fetchDetalhesOcorrencia } from "../../service/apiForms";
 import NavBar from "../../components/NavBar";
 import InformacoesOcorrencia from "./components/InformacoesOcorrencia";
 import Spinner from "../../components/Spinner";
+import TratamentoButton from "./components/TratamentoButton";
+import HistoricoButton from "./components/HistoricoButton";
+import VisualizarOcorrenciaButton from "./components/VisualizarOcorrenciaButton";
+import EvidenciasButton from "./components/EvidenciasButton";
+import EnviarFotosButton from "./components/EnviarFotosButton";
 
 function OcorrenciaPage() {
     const { identificador } = useParams<{ identificador: string }>();
@@ -30,12 +35,21 @@ function OcorrenciaPage() {
             {loading && <Spinner />}
 
             {!loading && ocorrencia &&
+            <>
                 <InformacoesOcorrencia
                     cpf={ocorrencia.cpf}
                     protocolo={ocorrencia.protocolo}
                     identificador={ocorrencia.identificador}
                     flow={ocorrencia.flow}
-                />}
+                />
+                <TratamentoButton ocorrencia={ocorrencia} />    
+
+                <HistoricoButton ocorrencia={ocorrencia} />
+                <EnviarFotosButton ocorrencia={ocorrencia} />
+                <VisualizarOcorrenciaButton ocorrencia={ocorrencia} />
+                <EvidenciasButton ocorrencia={ocorrencia} />
+            </>
+            }
         </>
     )
 }
