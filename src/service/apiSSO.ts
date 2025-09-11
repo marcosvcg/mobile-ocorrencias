@@ -3,7 +3,7 @@ import Cookies from 'js-cookie';
 
 const apiSSO = axios.create({
   baseURL: import.meta.env.VITE_API_SSO,
-  timeout: 10000,
+  timeout: 30000,
   headers: {
     'Content-Type': 'application/json',
   },
@@ -17,19 +17,18 @@ apiSSO.interceptors.request.use(config => {
   return config;
 });
 
-/*
 apiSSO.interceptors.response.use(
   response => response,
   async error => {
     if (error.response?.status === 401) {
+      Cookies.remove('token');
       window.location.href = import.meta.env.VITE_SSO_LOGOUT;
     }
     return Promise.reject(error);
   }
 );
-*/
 
-export async function validarToken(code: string) {
+export async function validarToken(code: string): Promise<boolean> {
   const dados = {
     redirect_uri: import.meta.env.VITE_REDIRECT_URI,
     code: code,
@@ -37,21 +36,25 @@ export async function validarToken(code: string) {
     client_secret: import.meta.env.VITE_CLIENT_SECRET
   };
   
-  apiSSO.post('/validar/', dados)
-    .then(response => {
-      Cookies.set('token', response?.data?.access_token, { 
-        secure: false,
+    const response = apiSSO.post('/validar/', dados);
+    const token = (await response).data.access_token;
+
+    if (token) {
+      Cookies.set('token', token, { 
+        secure: true,
         expires: 1
       });
-    })
+      return true;
+    }
+    return false;
 }
 
-export async function checarToken(): Promise<boolean> {
-  if (Cookies.get('token')) {
-    return await apiSSO.get('/checar/');
-  }
-  return false;
+export async function checarToken(token: string) {
+  const data = { access_token: token };
+  const tokenValido = await apiSSO.post('/checar/', data);
+  if (tokenValido.data === "false") window.location.href = import.meta.env.VITE_SSO_LOGOUT;
 }
+
 
 export async function fetchFotoCidadao(): Promise<string | null> {
   try {
@@ -73,7 +76,7 @@ export async function fetchDadosCidadao(): Promise<any | null> {
   try {
     const response = await apiSSO.get('/cidadaos/pro/');
     const results = response.data;
-
+    
     if (results) return results;
 
     return null;

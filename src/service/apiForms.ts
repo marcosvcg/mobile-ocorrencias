@@ -3,7 +3,7 @@ import Cookies from 'js-cookie';
 
 const apiForms = axios.create({
   baseURL: import.meta.env.VITE_API_FORMS,
-  timeout: 15000,
+  timeout: 30000,
   headers: {
     'Content-Type': 'application/json',
   },

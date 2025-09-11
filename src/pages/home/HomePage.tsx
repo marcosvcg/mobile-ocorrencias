@@ -7,7 +7,6 @@ import type { Ocorrencia } from "../../models/Ocorrencia";
 import { useEffect, useState } from "react";
 import Pagination from "./components/Pagination";
 import Spinner from "../../components/Spinner";
-import { checarToken } from "../../service/apiSSO";
 
 function HomePage() {
   const [ocorrencias, setOcorrencias] = useState<Ocorrencia[]>([]);
@@ -31,10 +30,6 @@ function HomePage() {
       .then(({ results, total_pages }) => {
         setOcorrencias(results);
         setPageCount(total_pages);
-      })
-      .catch(async () => {
-        const tokenValido = await checarToken();
-        if(!tokenValido) window.location.href = `${import.meta.env.VITE_SSO_LOGOUT}`
       })
       .finally(() => setLoading(false));
   };

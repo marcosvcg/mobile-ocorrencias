@@ -16,8 +16,8 @@ function Callback() {
         }
 
         const validar = async () => {
-            await validarToken(code);
-            navigate('/');
+            const sucesso = await validarToken(code);
+            if (sucesso) navigate('/');
         };
 
         validar();

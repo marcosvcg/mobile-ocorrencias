@@ -5,7 +5,6 @@ import { fetchDetalhesOcorrencia } from "../../service/apiForms";
 import NavBar from "../../components/NavBar";
 import InformacoesOcorrencia from "./components/InformacoesOcorrencia";
 import Spinner from "../../components/Spinner";
-import { checarToken } from "../../service/apiSSO";
 
 function OcorrenciaPage() {
     const { identificador } = useParams<{ identificador: string }>();
@@ -16,10 +15,6 @@ function OcorrenciaPage() {
         fetchDetalhesOcorrencia(identificador)
             .then((data) => {
                 setOcorrencia(data)
-            })
-            .catch(async () => {
-                const tokenValido = await checarToken();
-                if (!tokenValido) window.location.href = `${import.meta.env.VITE_SSO_LOGOUT}`
             })
             .finally(() => setLoading(false));
     }
