@@ -3,7 +3,5 @@ export const statusArray = [
   "Em Andamento",
   "Concluído",
   "Encaminhado",
-  "Restituído",
-  "Cancelado",
-  "Outros"
+  "Cancelado"
  ] as const;

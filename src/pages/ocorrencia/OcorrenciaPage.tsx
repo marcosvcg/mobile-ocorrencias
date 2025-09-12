@@ -10,36 +10,45 @@ import HistoricoButton from "./components/HistoricoButton";
 import VisualizarOcorrenciaButton from "./components/VisualizarOcorrenciaButton";
 import EvidenciasButton from "./components/EvidenciasButton";
 import EnviarFotosButton from "./components/EnviarFotosButton";
+import { fetchObterNomePeloCPF } from "../../service/apiBackend";
 
 function OcorrenciaPage() {
     const { identificador } = useParams<{ identificador: string }>();
     const [ocorrencia, setOcorrencia] = useState<Ocorrencia>();
     const [loading, setLoading] = useState(true);
+    const [nome, setNome] = useState<string | null>(null);
 
     const obterDetalhesOcorrencia = (identificador: string) => {
         fetchDetalhesOcorrencia(identificador)
             .then((data) => {
+                obterNomePeloCPF(data);
                 setOcorrencia(data)
             })
             .finally(() => setLoading(false));
     }
 
+    const obterNomePeloCPF = (ocorrencia: Ocorrencia) => {
+        fetchObterNomePeloCPF(ocorrencia.cpf)
+            .then((nome) => {
+                setNome(nome);
+            })
+    }
+
     useEffect(() => {
-        if (identificador)
-            obterDetalhesOcorrencia(identificador);
+        if (identificador) obterDetalhesOcorrencia(identificador);
     }, []);
 
     return (
         <>
             <NavBar />
-            {loading && <Spinner />}
+            {loading && !nome && <Spinner />}
 
-            {!loading && ocorrencia &&
+            {!loading && ocorrencia && nome &&
             <>
                 <InformacoesOcorrencia
                     cpf={ocorrencia.cpf}
+                    nome={nome}
                     protocolo={ocorrencia.protocolo}
-                    identificador={ocorrencia.identificador}
                     flow={ocorrencia.flow}
                 />
                 <TratamentoButton ocorrencia={ocorrencia} />    

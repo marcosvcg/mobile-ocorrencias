@@ -1,5 +1,37 @@
-.ocorrencia-card {
+.ocorrencia-card-Solicitado {
   background: white;
+  padding: 12px;
+  margin: 12px 16px;
+  border-radius: 8px;
+  box-shadow: 0px 2px 5px rgba(0,0,0,0.1);
+}
+
+.ocorrencia-card-Concluído {
+  background: rgb(177, 245, 160);
+  padding: 12px;
+  margin: 12px 16px;
+  border-radius: 8px;
+  box-shadow: 0px 2px 5px rgba(0,0,0,0.1);
+}
+
+.ocorrencia-card-EmAndamento {
+  background: rgb(255, 224, 139);
+  padding: 12px;
+  margin: 12px 16px;
+  border-radius: 8px;
+  box-shadow: 0px 2px 5px rgba(0,0,0,0.1);
+}
+
+.ocorrencia-card-Encaminhado {
+  background: rgb(255, 224, 139);
+  padding: 12px;
+  margin: 12px 16px;
+  border-radius: 8px;
+  box-shadow: 0px 2px 5px rgba(0,0,0,0.1);
+}
+
+.ocorrencia-card-Cancelado {
+  background: rgb(255, 151, 151);
   padding: 12px;
   margin: 12px 16px;
   border-radius: 8px;

@@ -11,7 +11,7 @@ const apiSSO = axios.create({
 
 apiSSO.interceptors.request.use(config => {
   const token = Cookies.get('token');
-  if (token) {
+  if (!config.headers.Authorization && token) {
     config.headers.Authorization = `Bearer ${token}`;
   }
   return config;

@@ -14,13 +14,16 @@ const OcorrenciaCard = ({
     navigate(`/ocorrencia/${identificador}`);
   }
 
+  const statusClass = status.replaceAll(' ', '');
+  const isStatusCancelado = status.toLowerCase().includes('cancelado');
+
   return (
-    <div className="ocorrencia-card" onClick={handleClick}>
-      <p><strong>Solicitado por:</strong> {formatarCPF(cpf)}</p>
-      <p><strong>Situação:</strong> {status}</p>
-      <p><strong>Protocolo:</strong> {protocolo}</p>
-      <p><strong>Solicitado em:</strong> {new Date(created_at).toLocaleString()}</p>
+    <div className={`ocorrencia-card-${isStatusCancelado ? 'Cancelado' : statusClass}`} onClick={handleClick}>
       <p><strong>Serviço:</strong> {servico_titulo}</p>
+      <p><strong>Requerente:</strong> {formatarCPF(cpf)}</p>
+      <p><strong>Protocolo:</strong> {protocolo}</p>
+      <p><strong>Data/abertura:</strong> {new Date(created_at).toLocaleString()}</p>
+      <p><strong>Status:</strong> {status}</p>
     </div>
   );
 };
