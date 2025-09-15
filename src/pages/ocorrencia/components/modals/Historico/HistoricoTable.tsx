@@ -1,13 +1,22 @@
-import "./css/HistoricoTable.css";
+import type { Ocorrencia } from "../../../../../models/Ocorrencia";
 import HistoricoTableItem from "./HistoricoTableItem";
+import "./css/HistoricoTable.css";
 
-const HistoricoTable = () => {
+interface Props {
+  ocorrencia: Ocorrencia;
+}
+
+const HistoricoTable = ({ ocorrencia }: Props) => {
   return (
     <table className="historico-table">
       <tbody className="historico-table-header">
-        <HistoricoTableItem />
-        <HistoricoTableItem />
-        <HistoricoTableItem />
+          {ocorrencia.historico.map((_, ordem) => (
+          <HistoricoTableItem
+            key={ocorrencia.historico[ordem].identificador}
+            ocorrencia={ocorrencia}
+            ordem={ordem}
+          />
+        ))}
       </tbody>
     </table>
   );

@@ -14,7 +14,7 @@
 .modal {
   display: flex;
   flex-direction: column;
-  background-color: #ffffff;
+  background-color: #b6b6b6;
   border-radius: 5px;
   width: 90%;
   max-height: 95vh;
@@ -47,7 +47,7 @@
 }
 
 .modal-content {
-  background-color: #ffffff;
+  background-color: #ecf2fc;
   overflow-y: auto;
   flex: 1;
   padding: 1rem;

@@ -1,11 +1,13 @@
-import "./css/HistoricoModal.css";
+import type { Ocorrencia } from "../../../../../models/Ocorrencia";
 import HistoricoTable from "./HistoricoTable";
+import "./css/HistoricoModal.css";
 
 interface Props {
-    onClose: () => void;
+  ocorrencia: Ocorrencia;
+  onClose: () => void;
 }
 
-const HistoricoModal = ({ onClose }: Props) => {
+const HistoricoModal = ({ onClose, ocorrencia }: Props) => {
   return (
     <div className="modal-container">
       <div className="modal">
@@ -14,7 +16,7 @@ const HistoricoModal = ({ onClose }: Props) => {
           <p className="close" onClick={() => onClose()}>&times;</p>
         </div>
         <div className="modal-content">
-          <HistoricoTable />
+          <HistoricoTable ocorrencia={ocorrencia} />
         </div>
       </div>
     </div>

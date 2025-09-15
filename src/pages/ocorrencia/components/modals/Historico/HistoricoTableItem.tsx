@@ -1,35 +1,53 @@
-const HistoricoTableItem = () => {
+import type { Ocorrencia } from "../../../../../models/Ocorrencia";
+
+interface Props {
+  ocorrencia: Ocorrencia;
+  ordem: number;
+}
+
+const HistoricoTableItem = ({ ocorrencia, ordem }: Props) => {
   return (
     <>
       <tr>
         <th>Ordem:</th>
-        <td>#1</td>
+        <td>{ordem + 1}º</td>
       </tr>
       <tr>
         <th>Status:</th>
-        <td>Solicitado</td>
+        <td>
+          {ocorrencia.historico[ordem].status}
+        </td>
       </tr>
       <tr>
         <th>Órgão/Setor:</th>
-        <td>
-          Secretaria Municipal de Inovação e Tecnologia / Setor de
-          Desenvolvimento
+        <td>{ocorrencia.historico[ordem].orgao}
+          {ocorrencia.historico[ordem].setor !== null
+            ? ' / ' + ocorrencia.historico[ordem].setor
+            : ''
+          }
         </td>
       </tr>
       <tr>
         <th>Tramitado em:</th>
-        <td>15/09/2025, 10:31:00</td>
+        <td>{new Date(ocorrencia.historico[ordem].updated_at).toLocaleString()}</td>
       </tr>
       <tr>
         <th>Atendente:</th>
-        <td>MEU NOME DA SILVA TESTES DE NOME GRANDE</td>
+        <td>{ocorrencia.atendente?.nome
+          ? ocorrencia.atendente.nome
+          : 'Não consta'}
+        </td>
+      </tr>
+      <tr style={{ backgroundColor: "#ffffff" }}>
+        <th>Descrição:</th>
+        <td>{ocorrencia.historico[ordem].descricao}</td>
       </tr>
       <tr>
         <td // espacamento no final!
           style={{
             height: "4vh",
             border: "none",
-            backgroundColor: "#ffffff"
+            backgroundColor: "#ecf2fc"
           }}
         ></td>
       </tr>

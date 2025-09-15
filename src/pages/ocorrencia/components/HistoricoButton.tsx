@@ -13,15 +13,15 @@ const HistoricoButton = ({ ocorrencia }: Props) => {
 
   return (
     <>
-    <button
-      className="historico-button"
-      disabled={!ocorrencia.historico}
-      onClick={() => setModalOpen(true)}
-    >
-      <span>Histórico</span> <ClockIcon />
-    </button>
+      <button
+        className="historico-button"
+        disabled={!ocorrencia.historico}
+        onClick={() => setModalOpen(true)}
+      >
+        <span>Histórico</span> <ClockIcon />
+      </button>
 
-    {modalOpen && <HistoricoModal onClose={() => setModalOpen(false)} />}
+      {modalOpen && <HistoricoModal onClose={() => setModalOpen(false)} ocorrencia={ocorrencia} />}
     </>
   );
 };

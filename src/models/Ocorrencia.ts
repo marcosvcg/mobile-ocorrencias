@@ -4,9 +4,14 @@ export interface Ocorrencia {
   status: string;
   cpf: string;
   created_at: string;
-  servico_titulo: string
+  servico_titulo: string;
 
-
+  atendente: {
+    id: number;
+    nome: string;
+    atendente: string;
+  };
+  
   flow: {
     slug: string;
     titulo: string;
