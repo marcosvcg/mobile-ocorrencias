@@ -16,8 +16,7 @@
   flex-direction: column;
   background-color: #b6b6b6;
   border-radius: 5px;
-  width: 85%;
-  max-height: 95vh;
+  width: 100%;
   overflow: hidden;
 }
 
@@ -35,15 +34,21 @@
 
 .visualizar-ocorrencia-titulo {
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 1.3rem;
+  font-size: 1.1rem;
   flex: 1;
   text-align: center;
-  margin-top: 0.4rem;
+  margin-top: 0.5rem;
 }
 
 .visualizar-ocorrencia-close {
   font-size: 2.5rem;
   line-height: 1;
+}
+
+.printer-icon {
+  vertical-align: middle;
+  margin-top: 0.5rem;
+  margin-left: 0.4rem;
 }
 
 .visualizar-ocorrencia-modal-content {
@@ -59,5 +64,4 @@
 .visualizar-ocorrencia-documento {
   width: 210mm !important;
   max-height: 297mm !important;
-
 }
