@@ -17,3 +17,13 @@ export async function fetchObterNomePeloCPF(cpf: string) {
         return "Não encontrado.";
     }
 }
+
+export async function fetchObterConteudoDocumentoPeloID(id: string) {
+    const body = { id: id }
+    try {
+        const response = await apiBackend.post(`/visualizar-ocorrencia`, body);
+        return response.data;                                                                         
+    } catch (error) {
+        return "Não encontrado.";
+    }
+}

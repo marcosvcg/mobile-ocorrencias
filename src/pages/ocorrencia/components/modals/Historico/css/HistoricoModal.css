@@ -1,4 +1,4 @@
-.modal-container {
+.historico-modal-container {
   position: fixed;
   left: 0;
   top: 0;
@@ -11,7 +11,7 @@
   z-index: 999;
 }
 
-.modal {
+.historico-modal {
   display: flex;
   flex-direction: column;
   background-color: #b6b6b6;
@@ -21,7 +21,7 @@
   overflow: hidden;
 }
 
-.modal-header {
+.historico-modal-header {
   background-color: #ffffff;
   position: sticky;
   top: 0;
@@ -33,20 +33,20 @@
   border-bottom: 1px solid #ccc;
 }
 
-.titulo {
+.historico-titulo {
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 1.1rem;
+  font-size: 1.3rem;
   flex: 1;
   text-align: center;
-  margin-top: 0.5rem;
+  margin-top: 0.4rem;
 }
 
-.close {
+.historico-close {
   font-size: 2.5rem;
   line-height: 1;
 }
 
-.modal-content {
+.historico-modal-content {
   background-color: #ecf2fc;
   overflow-y: auto;
   flex: 1;
