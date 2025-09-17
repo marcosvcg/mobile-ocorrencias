@@ -65,6 +65,7 @@ export interface Ocorrencia {
   arquivos_recebidos: {
     id: string;
     url: string;
+    resposta: string;
     nome: string;
     size: number;
   }[];
