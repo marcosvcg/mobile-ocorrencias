@@ -10,6 +10,8 @@ export interface Ocorrencia {
     id: number;
     nome: string;
     atendente: string;
+    username: string;
+    first_name: string;
   };
   
   flow: {

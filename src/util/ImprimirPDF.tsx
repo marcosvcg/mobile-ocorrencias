@@ -14,6 +14,7 @@ const ImprimirPDF = ({ editorRef, documentoSolicitacao }: Props) => {
                 onInit={(_, editor) => (editorRef.current = editor)}
                 value={documentoSolicitacao}
                 init={{
+                    licenseKey: "gpl",
                     menubar: false,
                     toolbar: false,
                     plugins: "print",

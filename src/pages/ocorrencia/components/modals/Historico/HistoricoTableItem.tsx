@@ -6,6 +6,23 @@ interface Props {
 }
 
 const HistoricoTableItem = ({ ocorrencia, ordem }: Props) => {
+  const obterCorPeloStatus = (status: string): string => {
+  switch (status) {
+    case "Solicitado":
+      return "#006affff";
+    case "Encaminhado":
+      return "#e3b325ff";
+    case "Em Andamento":
+      return "#e3b325ff";
+    case "Concluído":
+      return "#4ca84fff";
+    case "Cancelado":
+      return "#F44336";
+    default:
+      return "#65728cff";
+  }
+};
+
   return (
     <>
       <tr>
@@ -14,7 +31,10 @@ const HistoricoTableItem = ({ ocorrencia, ordem }: Props) => {
       </tr>
       <tr>
         <th>Status:</th>
-        <td>
+        <td className="td-status"
+        style={{
+          backgroundColor: obterCorPeloStatus(ocorrencia.historico[ordem].status)
+          }}>
           {ocorrencia.historico[ordem].status}
         </td>
       </tr>

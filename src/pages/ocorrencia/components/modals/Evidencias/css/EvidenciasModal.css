@@ -25,6 +25,8 @@
   background-color: #b6b6b6;
   border-radius: 5px;
   width: 90%;
+  max-height: 95%;
+  min-height: 50vh;
   overflow: hidden;
 }
 
@@ -64,3 +66,7 @@
   background-size: contain;
 }
 
+.evidencias-pdf {
+  position: absolute;
+  width: 100%;
+}

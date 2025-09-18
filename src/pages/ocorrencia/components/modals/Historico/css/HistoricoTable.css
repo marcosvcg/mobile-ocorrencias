@@ -39,3 +39,8 @@
   font-weight: bold;
   white-space: nowrap;
 }
+
+.td-status {
+  font-weight: bold;
+  color: #ffffff;
+}

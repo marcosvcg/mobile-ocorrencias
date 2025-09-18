@@ -38,7 +38,7 @@ const VisualizarOcorrenciaModal = ({ onClose, ocorrencia }: Props) => {
           <p className="visualizar-ocorrencia-close" onClick={() => onClose()}>&times;</p>
         </div>
         <div className="visualizar-ocorrencia-modal-content">
-          <div className="visualizar-ocorrencia-documento" dangerouslySetInnerHTML={{ __html: documentoSolicitacao }} onClick={handlePrint} />
+          <div className="visualizar-ocorrencia-documento" dangerouslySetInnerHTML={{ __html: documentoSolicitacao }} />
         </div>
       </div>
       <ImprimirPDF editorRef={editorRef} documentoSolicitacao={documentoSolicitacao} />
