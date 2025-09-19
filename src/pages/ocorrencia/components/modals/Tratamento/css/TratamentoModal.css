@@ -1,0 +1,74 @@
+.tratamento-modal-container {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.tratamento-modal {
+  display: flex;
+  flex-direction: column;
+  background-color: #b6b6b6;
+  border-radius: 5px;
+  width: 35vh;
+  height: fit-content;
+  overflow: hidden;
+}
+
+
+.tratamento-modal-content {
+  border: 2px solid #ecf2fc;
+  background-color: #ffffff;
+  flex: 1;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.deseja-iniciar-tratamento {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.3rem;
+    margin-bottom: 2rem;
+}
+
+.tratamento-modal-rodape {
+    margin-top: auto;
+}
+
+.tratamento-buttons-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.tratamento-button-nao,
+.tratamento-button-sim {
+  padding: 0.6rem 1.8rem;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.tratamento-button-nao {
+  background-color: #ff3d3d;
+  color: #ffffff;
+}
+
+.tratamento-button-sim {
+  background-color: #4CAF50;
+  color: #ffffff;
+}

@@ -34,3 +34,18 @@ export async function fetchDetalhesOcorrencia(identificador: string) {
   console.log("Detalhes da Ocorrência: \n" + response.data);
   return response.data;
 }
+
+export async function fetchAlterarAtendente(id: number, atendente: string) {
+  const body = { atendente: atendente };
+  await apiForms.put(`/alterar-atendente/${id}/`, body);
+  console.log("- Novo atendente: " + atendente);
+}
+
+export async function fetchAceitarDocumentoSolicitacao(identificadorDocumento: string, identificadorSolicitacao: string) {
+  const body = {
+    id: identificadorDocumento,
+    conformidade: true
+  };
+  await apiForms.put(`/documentos-solicitacao/${identificadorDocumento}/?identificador_solicitacao=${identificadorSolicitacao}`, body);
+  console.log("- Documento aceito!")
+}

@@ -16,9 +16,8 @@ const HistoricoTableItem = ({ ocorrencia, ordem }: Props) => {
       return "#e3b325ff";
     case "Concluído":
       return "#4ca84fff";
-    case "Cancelado":
-      return "#F44336";
     default:
+        if(status.includes("Cancelado")) return "#F44336";
       return "#65728cff";
   }
 };

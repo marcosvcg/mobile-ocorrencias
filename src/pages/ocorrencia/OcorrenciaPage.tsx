@@ -46,8 +46,9 @@ function OcorrenciaPage() {
             {!loading && ocorrencia && nome &&
             <>
                 <InformacoesOcorrencia
-                    cpf={ocorrencia.cpf}
+                    atendente={ocorrencia.atendente}
                     nome={nome}
+                    cpf={ocorrencia.cpf}
                     protocolo={ocorrencia.protocolo}
                     flow={ocorrencia.flow}
                 />

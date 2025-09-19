@@ -1,6 +1,7 @@
 export interface Ocorrencia {
   id: number;
   protocolo: string;
+  identificador: string;
   status: string;
   cpf: string;
   created_at: string;

@@ -1,37 +1,31 @@
-import { ChevronDown, Power } from "lucide-react"
-import { useEffect, useState } from "react";
-import { fetchDadosCidadao } from "../service/apiSSO";
+import { ChevronDown, Power } from "lucide-react";
+import { useState } from "react";
 import { formatarCPF } from "../util/formatarCPF";
-import FotoCidadao from "./FotoCidadao"
-import "./css/MenuCidadaoDropdown.css"
+import { useCidadao } from "../util/CidadaoProvider";
+import FotoCidadao from "./FotoCidadao";
+import "./css/MenuCidadaoDropdown.css";
 
 const MenuCidadaoDropdown = () => {
-const [isOpen, setIsOpen] = useState(false);
-const [dadosCidadao, setDadosCidadao] = useState<any>(null);
-const toggleDropdown = () => setIsOpen(!isOpen);
+  const { dadosCidadao } = useCidadao();
+  const [isOpen, setIsOpen] = useState(false);
+  const toggleDropdown = () => setIsOpen(!isOpen);
 
-  useEffect(() => {
-          const carregarDadosCidadao = async () => {
-              const data = await fetchDadosCidadao();
-              if (data) {
-                  setDadosCidadao(data);
-              }
-          };
-          carregarDadosCidadao();
-      }, []);
+  const logout = () => {
+    window.location.href = `${import.meta.env.VITE_SSO_LOGOUT}`;
+  }
 
-const logout = () => {
-  window.location.href = `${import.meta.env.VITE_SSO_LOGOUT}`;
-}
+  if (!dadosCidadao || !Array.isArray(dadosCidadao)) {
+    return null;
+  }
 
-    return (
-        <>
-        <button onClick={toggleDropdown}>
+  return (
+    <>
+      <button onClick={toggleDropdown}>
         <FotoCidadao />
         <ChevronDown />
-        </button>
+      </button>
 
-        {isOpen && (
+      {isOpen && (
         <div className="dropdown-cidadao-menu">
           <div className="dropdown-cidadao-item user-info">
             <strong className="nome">{dadosCidadao[0].nome}</strong>
@@ -44,8 +38,8 @@ const logout = () => {
           </div>
         </div>
       )}
-        </>
-    )
+    </>
+  )
 }
 
 export default MenuCidadaoDropdown;

@@ -1,27 +1,12 @@
-import { useEffect, useState } from "react";
-import { fetchFotoCidadao } from "../service/apiSSO";
+import { useCidadao } from "../util/CidadaoProvider";
 
 const FotoCidadao = () => {
-    const defaultIcon = '/default-avatar-icon.svg';
-    
-    const [fotoUrl, setFotoUrl] = useState<string>(defaultIcon);
-    const [cidadaoPossuiFoto, setCidadaoPossuiFoto] = useState<boolean>(false);
-
-    useEffect(() => {
-        const carregarFoto = async () => {
-            const foto = await fetchFotoCidadao();
-            if (foto) {
-                setFotoUrl(foto);
-                setCidadaoPossuiFoto(true);
-            }
-        };
-        carregarFoto();
-    }, []);
-
+    const { fotoUrl, cidadaoPossuiFoto } = useCidadao();
+    const defaultIcon = "/default-avatar-icon.svg";
 
     return (
-        <img src={cidadaoPossuiFoto ? fotoUrl : defaultIcon} alt="Foto do Cidadão" />
-    )
-}
+        <img src={cidadaoPossuiFoto ? fotoUrl || defaultIcon : defaultIcon} alt="Foto do Cidadão" />
+    );
+};
 
 export default FotoCidadao;
