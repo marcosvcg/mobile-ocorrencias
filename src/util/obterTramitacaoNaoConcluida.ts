@@ -1,7 +1,7 @@
 import type { Ocorrencia } from "../models/Ocorrencia";
 import type { Tramitacoes } from "../models/Tramitacoes";
 
-export function obterTramitacaoNaoConcluida(tramitacoes: Tramitacoes[], ocorrencia: Ocorrencia): number | null {
+export function obterTramitacaoNaoConcluida(tramitacoes: Tramitacoes[], ocorrencia: Ocorrencia): Tramitacoes | null {
   let alvo: Tramitacoes | undefined;
 
   if (ocorrencia.status === "Solicitado") {
@@ -16,5 +16,5 @@ export function obterTramitacaoNaoConcluida(tramitacoes: Tramitacoes[], ocorrenc
       .sort((a, b) => a.ordem - b.ordem)[0];
   }
 
-  return alvo ? alvo.tramitacao_id : null;
+  return alvo ?? null;
 }
