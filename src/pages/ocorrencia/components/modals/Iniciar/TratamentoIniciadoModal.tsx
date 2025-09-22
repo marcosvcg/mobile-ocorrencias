@@ -12,7 +12,7 @@ const TratamentoIniciadoModal = ({ onClose }: Props) => {
           <p className="tratamento-iniciado-close" onClick={() => onClose()}>&times;</p>
         </div>
         <div className="tratamento-iniciado-modal-content">
-            <span className="texto">Tratamento Iniciado!</span>
+            <span className="tratamento-iniciado-texto">Tratamento Iniciado!</span>
             </div>
         </div>
     </div>

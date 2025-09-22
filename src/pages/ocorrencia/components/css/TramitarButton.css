@@ -1,14 +1,14 @@
-.tratamento-button {
+.tramitar-button {
   display: flex;
   flex-direction: column;
   width: 90%;
   margin-right: auto;
   margin-left: auto;
-  margin-top: 5vh;
+  margin-top: 4vh;
 
   padding: 1rem;
 
-  background-color: #0047ff;
+  background-color: #0044f0;
   color: white;
 
   border: none;
@@ -17,11 +17,11 @@
   text-align: center;
 }
 
-.tratamento-button span {
+.tramitar-button span {
   font-size: 1.3rem;
 }
 
-.tratamento-button:disabled {
+.tramitar-button:disabled {
   background-color: #d2d2d2bc;
   color: #a3a3a3;
   cursor: not-allowed;

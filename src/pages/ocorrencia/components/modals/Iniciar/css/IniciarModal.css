@@ -1,4 +1,4 @@
-.tratamento-modal-container {
+.iniciar-modal-container {
   position: fixed;
   left: 0;
   top: 0;
@@ -11,7 +11,7 @@
   z-index: 999;
 }
 
-.tratamento-modal {
+.iniciar-modal {
   display: flex;
   flex-direction: column;
   background-color: #b6b6b6;
@@ -22,7 +22,7 @@
 }
 
 
-.tratamento-modal-content {
+.iniciar-modal-content {
   border: 2px solid #ecf2fc;
   background-color: #ffffff;
   flex: 1;
@@ -41,19 +41,19 @@
     margin-bottom: 2rem;
 }
 
-.tratamento-modal-rodape {
+.iniciar-modal-rodape {
     margin-top: auto;
 }
 
-.tratamento-buttons-container {
+.iniciar-buttons-container {
     width: 100%;
     display: flex;
     justify-content: center;
     gap: 15px;
 }
 
-.tratamento-button-nao,
-.tratamento-button-sim {
+.iniciar-button-nao,
+.iniciar-button-sim {
   padding: 0.6rem 1.8rem;
   font-size: 1.1rem;
   font-weight: bold;
@@ -63,12 +63,12 @@
   transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-.tratamento-button-nao {
+.iniciar-button-nao {
   background-color: #ff3d3d;
   color: #ffffff;
 }
 
-.tratamento-button-sim {
+.iniciar-button-sim {
   background-color: #4CAF50;
   color: #ffffff;
 }

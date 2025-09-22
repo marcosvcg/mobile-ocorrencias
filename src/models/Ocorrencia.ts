@@ -16,6 +16,7 @@ export interface Ocorrencia {
   };
   
   flow: {
+    id: string;
     slug: string;
     titulo: string;
     tipo_execucao: string;
@@ -31,6 +32,13 @@ export interface Ocorrencia {
     assinado_por: string;
     orgao: string;
     setor: string;
+  }[];
+
+  progresso: {
+    ordem: number;
+    atividade: string;
+    concluido: boolean;
+    orgao: string;
   }[];
 
   orgao: {

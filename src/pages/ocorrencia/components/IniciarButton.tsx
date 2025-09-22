@@ -2,61 +2,60 @@ import type { Ocorrencia } from "../../../models/Ocorrencia";
 import { fetchAceitarDocumentoSolicitacao, fetchAlterarAtendente } from "../../../service/apiForms";
 import { useState } from "react";
 import { useCidadao } from "../../../util/CidadaoProvider";
-import TratamentoModal from "./modals/Tratamento/TratamentoModal";
-import "./css/TratamentoButton.css";
-import TratamentoIniciadoModal from "./modals/Tratamento/TratamentoIniciadoModal";
+import TratamentoIniciadoModal from "./modals/Iniciar/TratamentoIniciadoModal";
+import IniciarModal from "./modals/Iniciar/IniciarModal";
+import "./css/IniciarButton.css";
 
 interface Props {
   ocorrencia: Ocorrencia;
 }
 
-const TratamentoButton = ({ ocorrencia }: Props) => {
+const IniciarButton = ({ ocorrencia }: Props) => {
   const [modalOpen, setModalOpen] = useState(false);
   const [tratamentoIniciadoModalOpen, setTratamentoIniciadoModelOpen] = useState(false);
   const { dadosCidadao } = useCidadao();
 
-  function iniciarTratamento() {
+  async function iniciarTratamento() {
 
-    if (!dadosCidadao || !Array.isArray(dadosCidadao)) {
-      return null;
-
-    }
+    if (!dadosCidadao || !Array.isArray(dadosCidadao)) return null;
+    
     else {
-      fetchAlterarAtendente(
+      setModalOpen(false);
+      setTratamentoIniciadoModelOpen(true);
+
+      await fetchAlterarAtendente(
         ocorrencia.id,
         dadosCidadao[0].cpf
       );
 
-      if (!ocorrencia.documentos_solicitacao[0].verificado_em) {
+      const documento = ocorrencia.documentos_solicitacao?.[0];
+      if (documento && !documento.verificado_em) {
         fetchAceitarDocumentoSolicitacao(
-          ocorrencia.documentos_solicitacao[0].id,
+          documento.id,
           ocorrencia.identificador
         );
       };
 
-      setModalOpen(false);
-      setTratamentoIniciadoModelOpen(true);
       setInterval(() => {
         window.location.reload();
       }, 1000);
     };
   }
 
-
   return (
     <>
       <button
-        className="tratamento-button"
+        className="iniciar-button"
         disabled={ocorrencia.status === "Concluído"}
         onClick={() => setModalOpen(true)}
       >
-        <span>Tratamento</span>
+        <span>Iniciar</span>
       </button>
 
-      {modalOpen && <TratamentoModal onNao={() => setModalOpen(false)} onSim={() => iniciarTratamento()} />}
+      {modalOpen && <IniciarModal onNao={() => setModalOpen(false)} onSim={() => iniciarTratamento()} />}
       {tratamentoIniciadoModalOpen && <TratamentoIniciadoModal onClose={() => setTratamentoIniciadoModelOpen(false)} />}
     </>
   );
 };
 
-export default TratamentoButton;
+export default IniciarButton;

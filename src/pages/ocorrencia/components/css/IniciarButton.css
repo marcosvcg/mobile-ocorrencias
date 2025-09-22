@@ -1,0 +1,28 @@
+.iniciar-button {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 4vh;
+
+  padding: 1rem;
+
+  background-color: #3078ff;
+  color: white;
+
+  border: none;
+  border-radius: 4px;
+  
+  text-align: center;
+}
+
+.iniciar-button span {
+  font-size: 1.3rem;
+}
+
+.iniciar-button:disabled {
+  background-color: #d2d2d2bc;
+  color: #a3a3a3;
+  cursor: not-allowed;
+}

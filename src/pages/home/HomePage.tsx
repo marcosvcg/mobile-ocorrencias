@@ -1,10 +1,10 @@
-import FilterDiv from "./components/FilterDiv";
-import NavBar from "../../components/NavBar";
-import OcorrenciasList from "./components/OcorrenciasList";
-import { fetchOcorrenciasPorFiltros } from "../../service/apiForms";
-import { filtroMap, type FiltroLabel } from "../../models/Filtros";
 import type { Ocorrencia } from "../../models/Ocorrencia";
 import { useEffect, useState } from "react";
+import { fetchOcorrenciasPorFiltros } from "../../service/apiForms";
+import { filtroMap, type FiltroLabel } from "../../models/Filtros";
+import OcorrenciasList from "./components/OcorrenciasList";
+import NavBar from "../../components/NavBar";
+import FilterDiv from "./components/FilterDiv";
 import Pagination from "./components/Pagination";
 import Spinner from "../../components/Spinner";
 

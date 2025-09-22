@@ -4,17 +4,20 @@ import { formatarCPF } from "../../../util/formatarCPF";
 import { useNavigate } from "react-router-dom";
 import PossuiAtendenteModal from "./modals/PossuiAtendenteModal";
 import { useState } from "react";
+import { useCidadao } from "../../../util/CidadaoProvider";
 
 type OcorrenciaCardProps = Pick<Ocorrencia, 'identificador' | 'cpf' | 'status' | 'protocolo' | 'created_at' | 'servico_titulo' | 'atendente'>;
 
 const OcorrenciaCard = ({
     identificador, cpf, status, protocolo, created_at, servico_titulo, atendente
 }: OcorrenciaCardProps) => {
-  const [modalOpen, setModalOpen] = useState(false)
+  const [modalOpen, setModalOpen] = useState(false);
+  const { dadosCidadao } = useCidadao();
   const navigate = useNavigate();
 
   const handleClick = () => {
-    if(atendente) {
+    if (!dadosCidadao || !Array.isArray(dadosCidadao)) return null;
+    if(atendente && dadosCidadao[0].cpf !== atendente.username) {
       setModalOpen(true);
     } else {
       navigate(`/ocorrencia/${identificador}`);
