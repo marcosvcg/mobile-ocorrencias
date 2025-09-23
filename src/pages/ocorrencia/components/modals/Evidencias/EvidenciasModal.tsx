@@ -1,8 +1,8 @@
 import type { Ocorrencia } from "../../../../../models/Ocorrencia";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
+import "../../../../../util/Swiper.css";
 import "./css/EvidenciasModal.css";
-import "./css/Swiper.css";
 
 interface Props {
   ocorrencia: Ocorrencia;
@@ -25,8 +25,9 @@ const EvidenciasModal = ({ onClose, ocorrencia }: Props) => {
           initialSlide={0}
           centeredSlides
           slidesPerView="auto"
-          speed={800}
+          speed={500}
           slideToClickedSlide
+          autoHeight={true}
           pagination={{ clickable: true }}
         >
           <div className="evidencias-modal-content">

@@ -11,7 +11,7 @@ import IniciarButton from "./components/IniciarButton";
 import HistoricoButton from "./components/HistoricoButton";
 import VisualizarOcorrenciaButton from "./components/VisualizarOcorrenciaButton";
 import EvidenciasButton from "./components/EvidenciasButton";
-import EnviarFotosButton from "./components/EnviarFotosButton";
+import RegistrosButton from "./components/RegistrosButton";
 import TramitarButton from "./components/TramitarButton";
 import "./OcorrenciaPage.css";
 
@@ -69,7 +69,7 @@ function OcorrenciaPage() {
                    
                 <div className="botoes-ocorrencia-container">
                 <HistoricoButton ocorrencia={ocorrencia} />
-                <EnviarFotosButton ocorrencia={ocorrencia} />
+                <RegistrosButton ocorrencia={ocorrencia} />
                 <VisualizarOcorrenciaButton ocorrencia={ocorrencia} />
                 <EvidenciasButton ocorrencia={ocorrencia} />
                 </div>

@@ -81,5 +81,14 @@ export interface Ocorrencia {
     size: number;
   }[];
 
+  anexos_internos: {
+    id: string;
+    arquivo: string;
+    criado_por: string;
+    orgao_sigla: string;
+    assunto: string;
+    descricao: string;
+  }[];
+
   [key: string]: any;
 }
