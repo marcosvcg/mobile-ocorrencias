@@ -1,60 +1,134 @@
 .tramitar-modal-container {
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 999;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
 }
 
 .tramitar-modal {
-    display: flex;
-    flex-direction: column;
-    background-color: #b6b6b6;
-    border-radius: 5px;
-    width: 30vh;
-    height: fit-content;
-    overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  background-color: #b6b6b6;
+  border-radius: 5px;
+  width: 35vh;
+  height: fit-content;
+  overflow: hidden;
 }
 
 .tramitar-modal-header {
-    background-color: #ffffff;
-    position: sticky;
-    top: 0;
-    z-index: 10;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    padding: 0.2rem 1rem;
-    border-bottom: 1px solid #ccc;
+  background-color: #ffffff;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0.15rem 1rem;
+  border-bottom: 1px solid #ccc;
+}
+
+.tramitar-titulo {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.2rem;
+  flex: 1;
+  text-align: center;
+  margin-top: 0.45rem;
+  margin-left: 0.8rem;
 }
 
 .tramitar-close {
-    font-size: 2.5rem;
-    line-height: 1;
+  font-size: 2.5rem;
+  line-height: 1;
 }
 
 .tramitar-modal-content {
-    border: 2px solid #ecf2fc;
-    background-color: #ffffff;
-    flex: 1;
-    display: flex;
-    width: 100%;
-    padding: 2rem;
-    flex-direction: column;
-    justify-content: space-around;
+  display: flex;
+  background-color: #ecf2fc;
+  display: flex;
+  width: 100%;
+  height: fit-content;
+  padding: 1rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
 }
 
 .tramitar-texto {
-    display: flex;
+  display: flex;
+  width: 100%;
+  text-align: start;
+  justify-content: start;
+  color: #000000;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  font-size: 1.5rem;
+  margin-bottom: 0.25rem;
+  padding-left: 0.5rem;
+  padding-right: 1rem;
+  padding-bottom: 0.25rem;
+  padding-top: 0.25rem;
+  border-radius: 4px;
+}
+
+.tramitar-etapa-div {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.tramitar-status-div {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 1rem;
+}
+
+.tramitar-etapa-texto,
+.tramitar-status-texto {
+  width: 100%;
+  text-align: center;
+  font-size: 1.2rem;
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 0.25rem;
+  border-radius: 4px;
+  background-color: #ffffff;
+  color: #000000;
+}
+
+.tramitar-buttons-container {
     width: 100%;
-    text-align: center;
+    display: flex;
     justify-content: center;
-    font-weight: bold;
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
+}
+
+.tramitar-button-cancelar,
+.tramitar-button-salvar {
+  width: 100%;
+  height: 3.5rem;
+  font-size: 1.3rem;
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
+  border: 0px solid #ecf2fc;
+  cursor: pointer;
+}
+
+.tramitar-button-cancelar {
+  background-color: #ff3d3d;
+  color: #ffffff;
+}
+
+.tramitar-button-salvar {
+  background-color: #4caf50;
+  color: #ffffff;
 }

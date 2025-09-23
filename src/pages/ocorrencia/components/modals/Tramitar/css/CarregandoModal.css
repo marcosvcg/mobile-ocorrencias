@@ -1,4 +1,4 @@
-.tratamento-iniciado-modal-container {
+.carregando-modal-container {
     position: fixed;
     left: 0;
     top: 0;
@@ -11,19 +11,19 @@
     z-index: 999;
 }
 
-.tratamento-iniciado-modal {
+.carregando-modal {
     display: flex;
     flex-direction: column;
     background-color: #b6b6b6;
+    border: 2px solid #b6b6b6;
     border-radius: 5px;
     width: 30vh;
     height: fit-content;
     overflow: hidden;
 }
 
-.tratamento-iniciado-modal-content {
-    border: 2px solid #ecf2fc;
-    background-color: #ffffff;
+.carregando-modal-content {
+    background-color: #004cff;
     flex: 1;
     display: flex;
     width: 100%;
@@ -32,12 +32,12 @@
     justify-content: space-around;
 }
 
-.tratamento-iniciado-texto {
+.carregando-texto {
     display: flex;
     width: 100%;
     text-align: center;
     justify-content: center;
-    font-weight: bold;
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
+    font-size: 1.6rem;
+    margin-bottom: 2rem;
+    color: #ffffff;
 }

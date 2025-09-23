@@ -46,14 +46,17 @@ const IniciarButton = ({ ocorrencia }: Props) => {
     <>
       <button
         className="iniciar-button"
-        disabled={ocorrencia.status === "Concluído"}
+        disabled={
+            ocorrencia.status === "Concluído" ||
+            ocorrencia.status.includes("Cancelado")
+        }
         onClick={() => setModalOpen(true)}
       >
         <span>Iniciar</span>
       </button>
 
       {modalOpen && <IniciarModal onNao={() => setModalOpen(false)} onSim={() => iniciarTratamento()} />}
-      {tratamentoIniciadoModalOpen && <TratamentoIniciadoModal onClose={() => setTratamentoIniciadoModelOpen(false)} />}
+      {tratamentoIniciadoModalOpen && <TratamentoIniciadoModal />}
     </>
   );
 };
