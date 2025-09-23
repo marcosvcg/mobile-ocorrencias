@@ -72,7 +72,7 @@ const TramitarButton = ({ ocorrencia }: Props) => {
         }
         onClick={() => setModalOpen(true)}
       >
-        <span>Tramitar</span>
+        <span>Executar</span>
       </button>
 
       {modalOpen && tramitacao && (
