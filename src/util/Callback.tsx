@@ -1,31 +1,36 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import { validarToken } from "../service/apiSSO";
 import { useEffect } from "react";
+import { useAuth } from "./AuthContext";
 
 function Callback() {
-    const navigate = useNavigate();
-    const location = useLocation();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const { setAuthenticated } = useAuth();
 
-    useEffect(() => {
-        const queryParams = new URLSearchParams(location.search);
-        const code = queryParams.get('code');
+  useEffect(() => {
+    const queryParams = new URLSearchParams(location.search);
+    const code = queryParams.get("code");
 
-        if (!code) {
-            navigate('/');
-            return;
-        }
+    if (!code) {
+      navigate("/");
+      return;
+    }
 
-        const validar = async () => {
-            const sucesso = await validarToken(code);
-            if (sucesso) navigate('/');
-        };
+    const validar = async () => {
+      const sucesso = await validarToken(code);
+      if (sucesso) {
+        setAuthenticated(true);
+        navigate("/");
+      } else {
+        navigate("/erro");
+      }
+    };
 
-        validar();
-    }, []);
+    validar();
+  }, [location.search]);
 
-    return (
-        <></>
-    )
+  return null;
 }
 
 export default Callback;

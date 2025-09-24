@@ -2,8 +2,14 @@ import { Routes, Route } from "react-router-dom";
 import HomePage from "../pages/home/HomePage";
 import OcorrenciaPage from "../pages/ocorrencia/OcorrenciaPage";
 import Callback from "../util/Callback";
+import { useAuth } from "../util/AuthContext";
+import Spinner from "../components/Spinner";
 
 const AppRoutes = () => {
+  const { authLoaded } = useAuth();
+
+  if (!authLoaded) return <Spinner />;
+
   return (
     <Routes>
       <Route index element={<HomePage />} />

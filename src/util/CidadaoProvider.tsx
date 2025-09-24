@@ -1,5 +1,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { fetchDadosCidadao, fetchFotoCidadao } from "../service/apiSSO";
+import Cookies from "js-cookie";
+import { useAuth } from "./AuthContext";
 
 type CidadaoContextType = {
     dadosCidadao: {
@@ -18,22 +20,27 @@ const CidadaoContext = createContext<CidadaoContextType>({
 
 export const CidadaoProvider = ({ children }: { children: React.ReactNode }) => {
     const defaultIcon = '/default-avatar-icon.svg';
+    const { isAuthenticated } = useAuth();
     const [dadosCidadao, setDadosCidadao] = useState<any>(null);
     const [fotoUrl, setFotoUrl] = useState<string>(defaultIcon);
     const [cidadaoPossuiFoto, setCidadaoPossuiFoto] = useState<boolean>(false);
 
     useEffect(() => {
         const carregarDadosCidadao = async () => {
-            const data = await fetchDadosCidadao();
-            if (data) setDadosCidadao(data);
-            const foto = await fetchFotoCidadao();
-            if (foto) {
-                setFotoUrl(foto);
-                setCidadaoPossuiFoto(true);
-            }
+            if (isAuthenticated) {
+                const data = await fetchDadosCidadao();
+
+                if (data) setDadosCidadao(data);
+                const foto = await fetchFotoCidadao();
+
+                if (foto) {
+                    setFotoUrl(foto);
+                    setCidadaoPossuiFoto(true);
+                };
+            };
         };
         carregarDadosCidadao();
-    }, []);
+    }, [isAuthenticated]);
 
     return (
         <CidadaoContext.Provider value={{ dadosCidadao, fotoUrl, cidadaoPossuiFoto }}>

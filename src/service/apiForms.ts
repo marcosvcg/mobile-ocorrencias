@@ -17,6 +17,17 @@ apiForms.interceptors.request.use(config => {
   return config;
 });
 
+apiForms.interceptors.response.use(
+  response => response,
+  async error => {
+    if (error.response?.status === 401) {
+      Cookies.remove('token');
+      window.location.href = import.meta.env.VITE_SSO_LOGOUT;
+    }
+    return Promise.reject(error);
+  }
+);
+
 export async function fetchOcorrenciasPorFiltros(
   status: string,
   filtro?: string,
