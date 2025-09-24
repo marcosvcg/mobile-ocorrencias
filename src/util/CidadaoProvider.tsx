@@ -1,6 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { fetchDadosCidadao, fetchFotoCidadao } from "../service/apiSSO";
-import Cookies from "js-cookie";
 import { useAuth } from "./AuthContext";
 
 type CidadaoContextType = {
