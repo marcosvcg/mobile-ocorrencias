@@ -7,9 +7,11 @@ import "./css/RegistrosModal.css";
 interface Props {
   ocorrencia: Ocorrencia;
   onClose: () => void;
+  onEnviarFotos: () => void;
 }
 
-const RegistrosModal = ({ onClose, ocorrencia }: Props) => {
+const RegistrosModal = ({ ocorrencia, onClose, onEnviarFotos }: Props) => {
+
   return (
     <>
     <div className="registros-modal-container">
@@ -45,8 +47,11 @@ const RegistrosModal = ({ onClose, ocorrencia }: Props) => {
           </div>
         </Swiper>
       </div>
-        <div className="registros-enviar-foto-div"> 
-            <button className="registros-button-enviar-foto">Enviar Foto</button>
+        <div className="registros-enviar-fotos-div"> 
+            <button className="registros-button-enviar-fotos" 
+                    onClick={onEnviarFotos}
+              >Enviar Fotos
+            </button>
          </div>
     </div>
     </>

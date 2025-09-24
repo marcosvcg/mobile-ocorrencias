@@ -1,7 +1,11 @@
 import type { Ocorrencia } from "../../../models/Ocorrencia";
-import { useState } from "react";
-import CameraIcon from "./icons/CameraIcon";
+import type { Tramitacoes } from "../../../models/Tramitacoes";
+import { useEffect, useState } from "react";
+import { fetchObterTramitacoesPeloProtocoloEFlowSlug } from "../../../service/apiBackend";
+import { obterTramitacaoNaoConcluida } from "../../../util/obterTramitacaoNaoConcluida";
 import RegistrosModal from "./modals/Registros/RegistrosModal";
+import EnviarFotosModal from "./modals/Registros/EnviarFotosModal";
+import CameraIcon from "./icons/CameraIcon";
 import "./css/RegistrosButton.css";
 
 interface Props {
@@ -10,6 +14,25 @@ interface Props {
 
 const RegistrosButton = ({ ocorrencia }: Props) => {
   const [modalOpen, setModalOpen] = useState(false);
+  const [enviarFotosModalOpen, setEnviarFotosModalOpen] = useState(false);
+  const [tramitacao, setTramitacao] = useState<Tramitacoes | null>(null);
+
+  useEffect(() => {
+      async function carregarTramitacao() {
+        if (ocorrencia) {
+          const data = await fetchObterTramitacoesPeloProtocoloEFlowSlug(
+            ocorrencia.protocolo,
+            ocorrencia.flow.id
+          );
+  
+          if (data && Array.isArray(data)) {
+            const tramitacaoEncontrada = obterTramitacaoNaoConcluida(data, ocorrencia);
+            setTramitacao(tramitacaoEncontrada);
+          };
+        };
+      };
+      carregarTramitacao();
+    }, [ocorrencia]);
 
   return (
     <>
@@ -26,8 +49,21 @@ const RegistrosButton = ({ ocorrencia }: Props) => {
 
       {modalOpen && (
         <RegistrosModal
-          onClose={() => setModalOpen(false)}
-          ocorrencia={ocorrencia}
+        ocorrencia={ocorrencia}
+        onClose={() => setModalOpen(false)}
+        onEnviarFotos={() => {
+          setModalOpen(false)
+          setEnviarFotosModalOpen(true)
+        }}/>
+      )}
+
+      {enviarFotosModalOpen && tramitacao && (
+        <EnviarFotosModal 
+        onClose={() => {setEnviarFotosModalOpen(false)}}
+        identificadorSolicitacao={ocorrencia.identificador}
+        assunto={tramitacao.atividade}
+        descricao={tramitacao.descricao}
+        solicitacao={ocorrencia.id}
         />
       )}
     </>

@@ -73,3 +73,15 @@ export async function fetchConfirmarTramitacaoSemAssinatura(cpf: string, identif
   await apiForms.post(`/confirmar-tramitacao-sem-assinatura`, body);
   console.log("- Tramitação confirmada!");
 }
+
+export async function fetchEnviarAnexoInterno(identificador_solicitacao: string, body: FormData) {
+  await apiForms.post(`/anexos-internos/?identificador_solicitacao=${identificador_solicitacao}`, body,
+    {
+      headers: {
+        // Deixar o Axios definir o Content-Type para multipart/form-data
+        'Content-Type': undefined
+      }
+    }
+  );
+  console.log("- Anexo interno enviado!");
+}
