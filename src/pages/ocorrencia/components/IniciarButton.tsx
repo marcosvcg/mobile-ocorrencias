@@ -30,7 +30,7 @@ const IniciarButton = ({ ocorrencia }: Props) => {
 
       const documento = ocorrencia.documentos_solicitacao?.[0];
       if (documento && !documento.verificado_em) {
-        fetchAceitarDocumentoSolicitacao(
+        await fetchAceitarDocumentoSolicitacao(
           documento.id,
           ocorrencia.identificador
         );

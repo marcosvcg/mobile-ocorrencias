@@ -6,7 +6,7 @@ import { useAuth } from "./AuthContext";
 function Callback() {
   const navigate = useNavigate();
   const location = useLocation();
-  const { setAuthenticated } = useAuth();
+  const { isAuthenticated, setAuthenticated } = useAuth();
 
   useEffect(() => {
     const queryParams = new URLSearchParams(location.search);
@@ -18,6 +18,7 @@ function Callback() {
     }
 
     const validar = async () => {
+      if (isAuthenticated) return;
       const sucesso = await validarToken(code);
       if (sucesso) {
         setAuthenticated(true);
