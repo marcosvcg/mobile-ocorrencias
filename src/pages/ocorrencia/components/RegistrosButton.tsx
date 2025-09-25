@@ -10,29 +10,12 @@ import "./css/RegistrosButton.css";
 
 interface Props {
   ocorrencia: Ocorrencia;
+  tramitacao: Tramitacoes;
 }
 
-const RegistrosButton = ({ ocorrencia }: Props) => {
+const RegistrosButton = ({ ocorrencia, tramitacao }: Props) => {
   const [modalOpen, setModalOpen] = useState(false);
   const [enviarFotosModalOpen, setEnviarFotosModalOpen] = useState(false);
-  const [tramitacao, setTramitacao] = useState<Tramitacoes | null>(null);
-
-  useEffect(() => {
-      async function carregarTramitacao() {
-        if (ocorrencia) {
-          const data = await fetchObterTramitacoesPeloProtocoloEFlowSlug(
-            ocorrencia.protocolo,
-            ocorrencia.flow.id
-          );
-  
-          if (data && Array.isArray(data)) {
-            const tramitacaoEncontrada = obterTramitacaoNaoConcluida(data, ocorrencia);
-            setTramitacao(tramitacaoEncontrada);
-          };
-        };
-      };
-      carregarTramitacao();
-    }, [ocorrencia]);
 
   return (
     <>

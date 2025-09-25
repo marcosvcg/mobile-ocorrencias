@@ -11,30 +11,13 @@ import CarregandoModal from "./modals/Tramitar/CarregandoModal";
 
 interface Props {
   ocorrencia: Ocorrencia;
+  tramitacao: Tramitacoes;
 }
 
-const TramitarButton = ({ ocorrencia }: Props) => {
+const TramitarButton = ({ ocorrencia, tramitacao }: Props) => {
   const [modalOpen, setModalOpen] = useState(false);
   const [carregandoModalOpen, setCarregandoModalOpen] = useState(false);
-  const [tramitacao, setTramitacao] = useState<Tramitacoes | null>(null);
   const { dadosCidadao } = useCidadao();
-
-  useEffect(() => {
-    async function carregarTramitacao() {
-      if (ocorrencia) {
-        const data = await fetchObterTramitacoesPeloProtocoloEFlowSlug(
-          ocorrencia.protocolo,
-          ocorrencia.flow.id
-        );
-
-        if (data && Array.isArray(data)) {
-          const tramitacaoEncontrada = obterTramitacaoNaoConcluida(data, ocorrencia);
-          setTramitacao(tramitacaoEncontrada);
-        };
-      };
-    };
-    carregarTramitacao();
-  }, [ocorrencia]);
 
   async function tramitarSolicitacao() {
     if (tramitacao) {
