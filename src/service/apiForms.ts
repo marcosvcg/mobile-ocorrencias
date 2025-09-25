@@ -36,20 +36,17 @@ export async function fetchOcorrenciasPorFiltros(
 ) {
   const response = await apiForms.get(`/solicitacoes/?status=${status}&filtro=${filtro}&busca=${busca}&page=${page}`);
   const { results, total_pages } = response.data;
-  console.log("-Resultado: " + status + ' ' + filtro + ' ' + busca + ' ' + page)
   return { results, total_pages };
 }
 
 export async function fetchDetalhesOcorrencia(identificador: string) {
   const response = await apiForms.get(`/carregar_solicitacao?identificador=${identificador}`);
-  console.log("Detalhes da Ocorrência: \n" + response.data);
   return response.data;
 }
 
 export async function fetchAlterarAtendente(id: number, atendente: string) {
   const body = { atendente: atendente };
   await apiForms.put(`/alterar-atendente/${id}/`, body);
-  console.log("- Novo atendente: " + atendente);
 }
 
 export async function fetchAceitarDocumentoSolicitacao(identificadorDocumento: string, identificadorSolicitacao: string) {
@@ -58,7 +55,6 @@ export async function fetchAceitarDocumentoSolicitacao(identificadorDocumento: s
     conformidade: true
   };
   await apiForms.put(`/documentos-solicitacao/${identificadorDocumento}/?identificador_solicitacao=${identificadorSolicitacao}`, body);
-  console.log("- Documento aceito!");
 }
 
 export async function fetchTramitarSolicitacao(descricao: string, identificador: string, orgao_id: number, status: string, tramitacao_id: number) {
@@ -70,7 +66,6 @@ export async function fetchTramitarSolicitacao(descricao: string, identificador:
     tramitacao_id: tramitacao_id,
   }
   const response = await apiForms.post(`/tramitar-solicitacao`, body);
-  console.log("- Solicitação tramitada, falta assinar! ---> " + response.data);
   return response.data;
 }
 
@@ -82,7 +77,6 @@ export async function fetchConfirmarTramitacaoSemAssinatura(cpf: string, identif
     tipo: tipo,
   }
   await apiForms.post(`/confirmar-tramitacao-sem-assinatura`, body);
-  console.log("- Tramitação confirmada!");
 }
 
 export async function fetchEnviarAnexoInterno(identificador_solicitacao: string, body: FormData) {
@@ -94,5 +88,4 @@ export async function fetchEnviarAnexoInterno(identificador_solicitacao: string,
       }
     }
   );
-  console.log("- Anexo interno enviado!");
 }
