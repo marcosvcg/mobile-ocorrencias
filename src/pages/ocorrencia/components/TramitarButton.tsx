@@ -1,9 +1,7 @@
 import type { Tramitacoes } from "../../../models/Tramitacoes";
 import type { Ocorrencia } from "../../../models/Ocorrencia";
-import { useEffect, useState } from "react";
-import { fetchObterTramitacoesPeloProtocoloEFlowSlug } from "../../../service/apiBackend";
+import { useState } from "react";
 import { fetchConfirmarTramitacaoSemAssinatura, fetchTramitarSolicitacao } from "../../../service/apiForms";
-import { obterTramitacaoNaoConcluida } from "../../../util/obterTramitacaoNaoConcluida";
 import { useCidadao } from "../../../util/CidadaoProvider";
 import TramitarModal from "./modals/Tramitar/TramitarModal";
 import "./css/TramitarButton.css";

@@ -1,8 +1,6 @@
 import type { Ocorrencia } from "../../../models/Ocorrencia";
 import type { Tramitacoes } from "../../../models/Tramitacoes";
-import { useEffect, useState } from "react";
-import { fetchObterTramitacoesPeloProtocoloEFlowSlug } from "../../../service/apiBackend";
-import { obterTramitacaoNaoConcluida } from "../../../util/obterTramitacaoNaoConcluida";
+import { useState } from "react";
 import RegistrosModal from "./modals/Registros/RegistrosModal";
 import EnviarFotosModal from "./modals/Registros/EnviarFotosModal";
 import CameraIcon from "./icons/CameraIcon";
