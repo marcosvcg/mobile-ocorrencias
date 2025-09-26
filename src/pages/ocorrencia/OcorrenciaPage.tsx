@@ -68,9 +68,9 @@ function OcorrenciaPage() {
   return (
     <>
       <NavBar />
-      {loading && !nome && <Spinner />}
+      {loading && <Spinner />}
 
-      {!loading && ocorrencia && tramitacao && nome && (
+      {!loading && ocorrencia && tramitacao && (
         <>
           <InformacoesOcorrencia
             flow={ocorrencia.flow}

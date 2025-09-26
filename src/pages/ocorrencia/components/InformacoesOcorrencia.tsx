@@ -21,7 +21,7 @@ const InformacoesOcorrencia = ({
       <h3>{flow.titulo}</h3>
 
       <p><strong>Atendente:</strong> {!atendente ? 'Não consta' : atendente.nome}</p>
-      <p><strong>Requerente:</strong> {nome}</p>
+      <p><strong>Requerente:</strong> {!nome ? 'Não consta' : nome}</p>
       <p><strong>CPF:</strong> {formatarCPF(cpf)}</p>
       <p><strong>Protocolo:</strong> {protocolo}</p>
       <p><strong>Progresso:</strong> {getUltimaAtividadeConcluida(progresso)}</p>
