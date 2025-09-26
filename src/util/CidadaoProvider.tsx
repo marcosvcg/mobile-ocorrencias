@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { fetchDadosCidadao, fetchFotoCidadao } from "../service/apiSSO";
-import { useAuth } from "./AuthContext";
+import { useAuth } from "./AuthProvider";
 
 type CidadaoContextType = {
     dadosCidadao: {

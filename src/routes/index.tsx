@@ -2,7 +2,7 @@ import { Routes, Route } from "react-router-dom";
 import HomePage from "../pages/home/HomePage";
 import OcorrenciaPage from "../pages/ocorrencia/OcorrenciaPage";
 import Callback from "../util/Callback";
-import { useAuth } from "../util/AuthContext";
+import { useAuth } from "../util/AuthProvider";
 import Spinner from "../components/Spinner";
 
 const AppRoutes = () => {

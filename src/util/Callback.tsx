@@ -1,7 +1,7 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import { validarToken } from "../service/apiSSO";
 import { useEffect } from "react";
-import { useAuth } from "./AuthContext";
+import { useAuth } from "./AuthProvider";
 
 function Callback() {
   const navigate = useNavigate();
