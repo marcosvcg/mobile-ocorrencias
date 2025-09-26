@@ -27,13 +27,11 @@ export const CidadaoProvider = ({ children }: { children: React.ReactNode }) => 
     useEffect(() => {
         const carregarDadosCidadao = async () => {
             if (isAuthenticated && !dadosCidadao) {
+                
                 const data = await fetchDadosCidadao();
-                let foto = null;
-
                 if (data) setDadosCidadao(data);
                 
-                if (!fotoUrl) foto = await fetchFotoCidadao();
-
+                const foto = await fetchFotoCidadao();
                 if (foto) {
                     setFotoUrl(foto);
                     setCidadaoPossuiFoto(true);

@@ -12,21 +12,24 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [authLoaded, setAuthLoaded] = useState(false);
-
-  useEffect(() => {
-    const token = Cookies.get("token");
-    if (token) {
-      setIsAuthenticated(true);
-    }
-    setAuthLoaded(true);
-  }, []);
-
+  
   const setAuthenticated = (value: boolean) => {
     setIsAuthenticated(value);
     if (!value) {
       Cookies.remove("token");
     }
   };
+
+  useEffect(() => {
+    const carregarToken = async () => {
+      const token = Cookies.get("token");
+      if (token) {
+        setIsAuthenticated(true);
+      }
+      setAuthLoaded(true);
+    }
+    carregarToken();
+  }, []);
 
   return (
     <AuthContext.Provider value={{ isAuthenticated, authLoaded, setAuthenticated }}>
