@@ -50,7 +50,10 @@ function OcorrenciaPage() {
             tramitacoes,
             ocorrenciaData
           );
-          setTramitacao(tramitacaoEncontrada);
+          
+          !tramitacaoEncontrada // se nao houver nenhuma tramitacao pendente, retorna a tramitacao ultima concluida
+            ? setTramitacao(tramitacoes[tramitacoes.length - 1]) 
+            : setTramitacao(tramitacaoEncontrada);
         }
       } finally {
         setLoading(false);
