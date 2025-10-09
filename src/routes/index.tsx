@@ -14,7 +14,8 @@ const AppRoutes = () => {
     <Routes>
       <Route index element={<HomePage />} />
       <Route path="/callback" element={<Callback />}/>
-      <Route path="/ocorrencia/:identificador" element={<OcorrenciaPage />} />
+      <Route path="/ocorrencia-digital/:identificador" element={<OcorrenciaPage />} />
+      <Route path="/ocorrencia/:protocolo" element={<> <p>teste</p> </>} />
       <Route path="*" element={<HomePage />} />
     </Routes>
   );

@@ -1,10 +1,10 @@
-import type { Ocorrencia } from "../../../models/Ocorrencia";
+import type { SolicitacaoView } from "../../../models/SolicitacaoView";
 import OcorrenciaCard from "./OcorrenciaCard";
 import OcorrenciaHandler from "./OcorrenciaHandler";
 import "./css/OcorrenciasList.css";
 
 type Props = {
-  ocorrencias: Ocorrencia[];
+  ocorrencias: SolicitacaoView[];
 };
 
 const OcorrenciasList = ({ ocorrencias }: Props) => {

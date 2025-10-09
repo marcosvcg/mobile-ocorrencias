@@ -1,12 +1,12 @@
-import "./css/OcorrenciaCard.css";
-import type { Ocorrencia } from "../../../models/Ocorrencia";
+import type { SolicitacaoView } from "../../../models/SolicitacaoView";
 import { formatarCPF } from "../../../util/formatarCPF";
 import { useNavigate } from "react-router-dom";
-import PossuiAtendenteModal from "./modals/PossuiAtendenteModal";
 import { useState } from "react";
 import { useCidadao } from "../../../util/CidadaoProvider";
+import PossuiAtendenteModal from "./modals/PossuiAtendenteModal";
+import "./css/OcorrenciaCard.css";
 
-type OcorrenciaCardProps = Pick<Ocorrencia, 'identificador' | 'cpf' | 'status' | 'protocolo' | 'created_at' | 'servico_titulo' | 'atendente'>;
+type OcorrenciaCardProps = Pick<SolicitacaoView, 'identificador' | 'cpf' | 'status' | 'protocolo' | 'created_at' | 'servico_titulo' | 'atendente'>;
 
 const OcorrenciaCard = ({
     identificador, cpf, status, protocolo, created_at, servico_titulo, atendente
@@ -20,7 +20,7 @@ const OcorrenciaCard = ({
     if(atendente && dadosCidadao[0].cpf !== atendente.username) {
       setModalOpen(true);
     } else {
-      navigate(`/ocorrencia/${identificador}`);
+      navigate(`/ocorrencia-digital/${identificador}`);
     }
   }
 
@@ -32,7 +32,7 @@ const OcorrenciaCard = ({
     {modalOpen && 
     <PossuiAtendenteModal 
       onNao={() => setModalOpen(false)} 
-      onSim={() => navigate(`/ocorrencia/${identificador}`)} 
+      onSim={() => navigate(`/ocorrencia-digital/${identificador}`)} 
       atendente={atendente} 
     />}
       <div className={`ocorrencia-card-${isStatusCancelado ? 'Cancelado' : statusClass}`} onClick={handleClick}>
