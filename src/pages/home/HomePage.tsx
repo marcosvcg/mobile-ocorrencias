@@ -1,5 +1,5 @@
-import type { Ocorrencia } from "../../models/Ocorrencia";
 import { useEffect, useState } from "react";
+import type { SolicitacaoView } from "../../models/SolicitacaoView";
 import { fetchOcorrenciasPorFiltros } from "../../service/apiForms";
 import { filtroMap, type FiltroLabel } from "../../models/Filtros";
 import OcorrenciasList from "./components/OcorrenciasList";
@@ -9,7 +9,7 @@ import Pagination from "./components/Pagination";
 import Spinner from "../../components/Spinner";
 
 function HomePage() {
-  const [ocorrencias, setOcorrencias] = useState<Ocorrencia[]>([]);
+  const [ocorrencias, setOcorrencias] = useState<SolicitacaoView[]>([]);
   const [loading, setLoading] = useState(true);
   const [pageCount, setPageCount] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);

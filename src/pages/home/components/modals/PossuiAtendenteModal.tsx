@@ -1,8 +1,8 @@
-import type { Ocorrencia } from "../../../../models/Ocorrencia";
+import type { SolicitacaoView } from "../../../../models/SolicitacaoView";
 import "./css/PossuiAtendenteModal.css";
 
 interface Props {
-  atendente: Ocorrencia["atendente"];
+  atendente: SolicitacaoView["atendente"];
   onNao: () => void;
   onSim: () => void;
 }
