@@ -28,25 +28,30 @@ apiForms.interceptors.response.use(
   }
 );
 
+export async function fetchPermissoesCidadao() {
+   const response = await apiForms.get('/core/my-permissions');
+   return response.data;
+}
+
 export async function fetchOcorrenciasPorFiltros(
   status: string,
   filtro?: string,
   busca?: string,
   page: number = 1
 ) {
-  const response = await apiForms.get(`/solicitacoes/?status=${status}&filtro=${filtro}&busca=${busca}&page=${page}`);
+  const response = await apiForms.get(`/flow/solicitacoes/?status=${status}&filtro=${filtro}&busca=${busca}&page=${page}`);
   const { results, total_pages } = response.data;
   return { results, total_pages };
 }
 
 export async function fetchDetalhesOcorrencia(identificador: string) {
-  const response = await apiForms.get(`/carregar_solicitacao?identificador=${identificador}`);
+  const response = await apiForms.get(`/flow/carregar_solicitacao?identificador=${identificador}`);
   return response.data;
 }
 
 export async function fetchAlterarAtendente(id: number, atendente: string) {
   const body = { atendente: atendente };
-  await apiForms.put(`/alterar-atendente/${id}/`, body);
+  await apiForms.put(`/flow/alterar-atendente/${id}/`, body);
 }
 
 export async function fetchAceitarDocumentoSolicitacao(identificadorDocumento: string, identificadorSolicitacao: string) {
@@ -54,7 +59,7 @@ export async function fetchAceitarDocumentoSolicitacao(identificadorDocumento: s
     id: identificadorDocumento,
     conformidade: true
   };
-  await apiForms.put(`/documentos-solicitacao/${identificadorDocumento}/?identificador_solicitacao=${identificadorSolicitacao}`, body);
+  await apiForms.put(`/flow/documentos-solicitacao/${identificadorDocumento}/?identificador_solicitacao=${identificadorSolicitacao}`, body);
 }
 
 export async function fetchTramitarSolicitacao(descricao: string, identificador: string, orgao_id: number, status: string, tramitacao_id: number) {
@@ -65,7 +70,7 @@ export async function fetchTramitarSolicitacao(descricao: string, identificador:
     status: status,
     tramitacao_id: tramitacao_id,
   }
-  const response = await apiForms.post(`/tramitar-solicitacao`, body);
+  const response = await apiForms.post(`/flow/tramitar-solicitacao`, body);
   return response.data;
 }
 
@@ -76,11 +81,11 @@ export async function fetchConfirmarTramitacaoSemAssinatura(cpf: string, identif
     internal_state: internal_state,
     tipo: tipo,
   }
-  await apiForms.post(`/confirmar-tramitacao-sem-assinatura`, body);
+  await apiForms.post(`/flow/confirmar-tramitacao-sem-assinatura`, body);
 }
 
 export async function fetchEnviarAnexoInterno(identificador_solicitacao: string, body: FormData) {
-  await apiForms.post(`/anexos-internos/?identificador_solicitacao=${identificador_solicitacao}`, body,
+  await apiForms.post(`/flow/anexos-internos/?identificador_solicitacao=${identificador_solicitacao}`, body,
     {
       headers: {
         // Deixar o Axios definir o Content-Type para multipart/form-data

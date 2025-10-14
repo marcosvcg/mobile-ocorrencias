@@ -38,3 +38,42 @@ export async function fetchObterTramitacoesPeloProtocoloEFlowSlug(protocolo: str
         return "Não encontrado.";
     }
 }
+
+export async function fetchObterSetorIdPorSigla(orgao_id: string, setores: string[] | null) {
+    const body = { orgao_id: orgao_id, setores: setores }
+    try {
+        const response = await apiBackend.post(`/obter-setor`, body);
+        return response.data;
+    } catch (error) {
+        return "Não encontrado.";
+    }
+}
+
+export async function fetchObterDemandasPorFiltros(
+    orgao_slug: string,
+    setor_id?: string[], 
+    status?: string,
+    filtro?: string,
+    valor?: string,
+    page?: number
+) {
+    const body: Record<string, any> = {
+        orgao_slug
+    };
+
+  if (Array.isArray(setor_id) && setor_id.length > 0) {
+    body.setor_id = setor_id;
+  }
+
+  if (status) body.status = status;
+  if (filtro) body.filtro = filtro;
+  if (valor) body.valor = valor;
+  if (page) body.page = page;
+  
+    try {
+        const response = await apiBackend.post(`/obter-demandas`, body);
+        return response.data;
+    } catch (error) {
+        return "Não encontrado.";
+    }
+}

@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useCidadao } from "../../util/CidadaoProvider";
 import type { SolicitacaoView } from "../../models/SolicitacaoView";
 import { fetchOcorrenciasPorFiltros } from "../../service/apiForms";
 import { filtroMap, type FiltroLabel } from "../../models/Filtros";
@@ -9,6 +10,8 @@ import Pagination from "./components/Pagination";
 import Spinner from "../../components/Spinner";
 
 function HomePage() {
+  const { orgaoSlug, setores } = useCidadao();
+
   const [ocorrencias, setOcorrencias] = useState<SolicitacaoView[]>([]);
   const [loading, setLoading] = useState(true);
   const [pageCount, setPageCount] = useState(0);
@@ -35,8 +38,9 @@ function HomePage() {
   };
 
   useEffect(() => {
+    if (!orgaoSlug) return;
     obterOcorrencias(statusSelecionado, filtroMap[filtroSelecionado], busca, currentPage);
-  }, [currentPage]);
+  }, [currentPage, orgaoSlug]);
 
   return (
     <>

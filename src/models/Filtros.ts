@@ -1,8 +1,7 @@
 export const filtroMap: Record<string, string> = {
   "Filtrar por": "",
   "CPF": "cpf",
-  "Protocolo": "protocolo",
-  "Serviço": "servico"
+  "Protocolo": "protocolo"
 } as const;
 
 export type FiltroLabel = keyof typeof filtroMap;
