@@ -23,8 +23,8 @@ const FiltrarStatus = ({ statusSelecionado, setStatusSelecionado, onStatusSeleci
   };
 
   return (
-    <div className="filtrar-status">
-      <div className="status-button" onClick={toggleDropdown} onMouseOut={() => setIsOpen(false)}>
+    <div className="filtrar-status" onMouseLeave={() => setIsOpen(false)}>
+      <div className="status-button" onClick={toggleDropdown}>
         <span>{statusSelecionado}</span>
         <span className="arrow">{isOpen ? "▲" : "▼"}</span>
       </div>

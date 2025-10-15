@@ -28,7 +28,7 @@
 .status-menu {
   position: absolute;
   overflow: hidden;
-  transform: translateY(6px);
+  transform: translateY(-2px);
   left: 0;
   width: 100%;
   background-color: white;
