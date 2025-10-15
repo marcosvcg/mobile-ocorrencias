@@ -8,6 +8,7 @@ import NavBar from "../../components/NavBar";
 import FilterDiv from "./components/FilterDiv";
 import Pagination from "./components/Pagination";
 import Spinner from "../../components/Spinner";
+import { DataMapper } from "../../models/DataMapper";
 
 function HomePage() {
   const { orgaoSlug, setores } = useCidadao();
@@ -31,7 +32,9 @@ function HomePage() {
 
     fetchOcorrenciasPorFiltros(status, filtro, valor, page)
       .then(({ results, total_pages }) => {
-        setOcorrencias(results);
+        setOcorrencias(
+          results.map(DataMapper.mapOcorrenciaToView)
+        );
         setPageCount(total_pages);
       })
       .finally(() => setLoading(false));

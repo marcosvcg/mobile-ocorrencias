@@ -9,10 +9,12 @@ const mapOcorrenciaToView = (data: Ocorrencia): SolicitacaoView => ({
     protocolo: data.protocolo,
     created_at: data.created_at,
     servico_titulo: data.servico_titulo,
-    atendente: {
-      username: data.atendente.username, // "username" eh o cpf...
-      first_name: data.atendente.first_name
-    },
+    atendente: data.atendente
+    ? {
+        username: data.atendente.username || null,
+        first_name: data.atendente.first_name || null,
+      }
+    : null,
 });
 
 const mapDemandaAtendenteToView = (data: DemandaAtendente): SolicitacaoView => ({
@@ -22,10 +24,12 @@ const mapDemandaAtendenteToView = (data: DemandaAtendente): SolicitacaoView => (
     protocolo: data.protocolo,
     created_at: data.created_at,
     servico_titulo: data.servico_titulo,
-    atendente: {
-      username: data.atendente_id,
-      first_name: data.atendente_nome
-    },
+    atendente: data.atendente
+    ? {
+        username: data.atendente_id || null,
+        first_name: data.atendente_nome || null,
+      }
+    : null,
 });
 
 export const DataMapper = {
