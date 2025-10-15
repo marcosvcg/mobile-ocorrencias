@@ -6,21 +6,26 @@ import { useCidadao } from "../../../util/CidadaoProvider";
 import PossuiAtendenteModal from "./modals/PossuiAtendenteModal";
 import "./css/OcorrenciaCard.css";
 
-type OcorrenciaCardProps = Pick<SolicitacaoView, 'identificador' | 'cpf' | 'status' | 'protocolo' | 'created_at' | 'servico_titulo' | 'atendente'>;
+type OcorrenciaCardProps = Pick<SolicitacaoView, 'identificador' | 'cpf' | 'status' | 'protocolo' | 'created_at' | 'servico_titulo' | 'atendente' | 'tipo'>;
 
 const OcorrenciaCard = ({
-    identificador, cpf, status, protocolo, created_at, servico_titulo, atendente
+    identificador, cpf, status, protocolo, created_at, servico_titulo, atendente, tipo
 }: OcorrenciaCardProps) => {
   const [modalOpen, setModalOpen] = useState(false);
   const { dadosCidadao } = useCidadao();
   const navigate = useNavigate();
+
+  const handleNavigate = () => { 
+    if (tipo === "Solicitação Digital") navigate(`/ocorrencia-digital/${identificador}`);
+    if (tipo === "Solicitação/Serviço") navigate(`/ocorrencia/${protocolo}`);
+  }
 
   const handleClick = () => {
     if (!dadosCidadao || !Array.isArray(dadosCidadao)) return null;
     if(atendente && dadosCidadao[0].cpf !== atendente.username) {
       setModalOpen(true);
     } else {
-      navigate(`/ocorrencia-digital/${identificador}`);
+      handleNavigate();
     }
   }
 
@@ -32,15 +37,24 @@ const OcorrenciaCard = ({
     {modalOpen && 
     <PossuiAtendenteModal 
       onNao={() => setModalOpen(false)} 
-      onSim={() => navigate(`/ocorrencia-digital/${identificador}`)} 
+      onSim={() => handleNavigate()} 
       atendente={atendente} 
     />}
-      <div className={`ocorrencia-card-${isStatusCancelado ? 'Cancelado' : statusClass}`} onClick={handleClick}>
+      <div className="ocorrencia-card" onClick={handleClick}>
         <p><strong>Serviço:</strong> {servico_titulo}</p>
         <p><strong>Requerente:</strong> {formatarCPF(cpf === null ? 'Não consta' : cpf)}</p>
         <p><strong>Protocolo:</strong> {protocolo}</p>
         <p><strong>Data/abertura:</strong> {new Date(created_at).toLocaleString()}</p>
-        <p><strong>Status:</strong> {status}</p>
+        <p><strong>Tipo:</strong> 
+          <strong 
+            style={tipo === "Solicitação Digital"
+              ? { color: "#0084ffff"}
+              : { color: "#163270ff"}}> {tipo}
+          </strong>
+        </p>
+        <p className={`ocorrencia-card-status-${isStatusCancelado ? 'Cancelado' : statusClass}`}>
+          <strong>Status:</strong> {status}
+        </p>
       </div>
     </>
   );

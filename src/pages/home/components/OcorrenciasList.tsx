@@ -22,6 +22,7 @@ const OcorrenciasList = ({ ocorrencias }: Props) => {
           created_at={ocorrencia.created_at}
           servico_titulo={ocorrencia.servico_titulo}
           atendente={ocorrencia.atendente}
+          tipo={ocorrencia.tipo}
         />
       ))}
     </div>

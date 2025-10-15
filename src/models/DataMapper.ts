@@ -15,6 +15,7 @@ const mapOcorrenciaToView = (data: Ocorrencia): SolicitacaoView => ({
         first_name: data.atendente.first_name || null,
       }
     : null,
+    tipo: "Solicitação Digital"
 });
 
 const mapDemandaAtendenteToView = (data: DemandaAtendente): SolicitacaoView => ({
@@ -30,6 +31,7 @@ const mapDemandaAtendenteToView = (data: DemandaAtendente): SolicitacaoView => (
         first_name: data.atendente_nome || null,
       }
     : null,
+    tipo: "Solicitação/Serviço"
 });
 
 export const DataMapper = {

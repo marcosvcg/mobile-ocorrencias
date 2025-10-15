@@ -1,39 +1,38 @@
-.ocorrencia-card-Solicitado {
+.ocorrencia-card {
+  background: #ffff;
+  padding: 12px;
+  margin: 12px 16px;
+  border-radius: 8px;
+  line-height: 1.6;
+  box-shadow: 0px 2px 5px rgba(0,0,0,0.2);
+}
+
+.ocorrencia-card-status-Solicitado,
+.ocorrencia-card-status-EmAndamento,
+.ocorrencia-card-status-Encaminhado,
+.ocorrencia-card-status-Concluído,
+.ocorrencia-card-status-Cancelado {
+  margin-top: 4px;
+  padding: 4px;
+  box-shadow: 0px 2px 5px rgba(0,0,0,0.2);
+}
+
+.ocorrencia-card-status-Solicitado {
   background: rgb(203, 234, 255);
-  padding: 12px;
-  margin: 12px 16px;
-  border-radius: 8px;
-  box-shadow: 0px 2px 5px rgba(0,0,0,0.2);
 }
 
-.ocorrencia-card-Concluído {
+.ocorrencia-card-status-Concluído {
   background: rgb(177, 245, 160);
-  padding: 12px;
-  margin: 12px 16px;
-  border-radius: 8px;
-  box-shadow: 0px 2px 5px rgba(0,0,0,0.2);
 }
 
-.ocorrencia-card-EmAndamento {
+.ocorrencia-card-status-EmAndamento {
   background: rgb(255, 224, 139);
-  padding: 12px;
-  margin: 12px 16px;
-  border-radius: 8px;
-  box-shadow: 0px 2px 5px rgba(0,0,0,0.2);
 }
 
-.ocorrencia-card-Encaminhado {
+.ocorrencia-card-status-Encaminhado {
   background: rgb(255, 224, 139);
-  padding: 12px;
-  margin: 12px 16px;
-  border-radius: 8px;
-  box-shadow: 0px 2px 5px rgba(0,0,0,0.2);
 }
 
-.ocorrencia-card-Cancelado {
+.ocorrencia-card-status-Cancelado {
   background: rgb(255, 151, 151);
-  padding: 12px;
-  margin: 12px 16px;
-  border-radius: 8px;
-  box-shadow: 0px 2px 5px rgba(0,0,0,0.2);
 }

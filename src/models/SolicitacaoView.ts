@@ -10,4 +10,5 @@ export interface SolicitacaoView {
     username: string | null;
     first_name: string | null;
   } | null;
+  tipo: string;
 }
