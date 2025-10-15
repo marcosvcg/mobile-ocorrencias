@@ -38,7 +38,6 @@ function HomePage() {
   };
 
   useEffect(() => {
-    if (!orgaoSlug) return;
     obterOcorrencias(statusSelecionado, filtroMap[filtroSelecionado], busca, currentPage);
   }, [currentPage, orgaoSlug]);
 
