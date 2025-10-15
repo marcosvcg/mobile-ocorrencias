@@ -1,11 +1,19 @@
 .ocorrencia-handler {
-    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    height: calc(40px + 10%);
+    width: calc(240px + 25%);
+    
+    margin: auto;
+    margin-top: calc(75px + 10%);
+
     background: white;
-    padding: 4vw;
-    margin: 70% 10%;
     border-radius: 8px;
     box-shadow: 0px 2px 5px rgba(0,0,0,0.1);
+
     text-align: center;
     font-weight: bold;
-    font-size: 1.15rem;
+    font-size: 1.2rem;
 }

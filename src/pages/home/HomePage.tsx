@@ -9,6 +9,7 @@ import FilterDiv from "./components/FilterDiv";
 import Pagination from "./components/Pagination";
 import Spinner from "../../components/Spinner";
 import { DataMapper } from "../../models/DataMapper";
+import { fetchObterDemandasPorFiltros } from "../../service/apiBackend";
 
 function HomePage() {
   const { orgaoSlug, setores } = useCidadao();
@@ -22,26 +23,41 @@ function HomePage() {
   const [filtroSelecionado, setFiltroSelecionado] = useState<FiltroLabel>('Filtrar por');
   const [busca, setBusca] = useState('');
 
-  const obterOcorrencias = (
+  const obterOcorrencias = async (
     status: string = statusSelecionado,
     filtro?: FiltroLabel,
     valor?: string,
     page?: number
-  ) => {
+) => {
+  try {
     setLoading(true);
 
-    fetchOcorrenciasPorFiltros(status, filtro, valor, page)
-      .then(({ results, total_pages }) => {
-        setOcorrencias(
-          results.map(DataMapper.mapOcorrenciaToView)
-        );
-        setPageCount(total_pages);
-      })
-      .finally(() => setLoading(false));
-  };
+    const [demandasRetornadas, ocorrenciasRetornadas] = await Promise.all([
+      fetchObterDemandasPorFiltros(orgaoSlug, setores, status, filtro, valor, page),
+      fetchOcorrenciasPorFiltros(status, filtro, valor, page)
+    ]);
+    
+    const totalPaginas = (demandasRetornadas.total_pages + ocorrenciasRetornadas.total_pages);
+
+    const demandasMapeadas = demandasRetornadas.results.map(DataMapper.mapDemandaAtendenteToView);
+    const ocorrenciasMapeadas = ocorrenciasRetornadas.results.map(DataMapper.mapOcorrenciaToView);
+
+    const totalOcorrencias = [...demandasMapeadas, ...ocorrenciasMapeadas].sort(
+      (a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime()
+    );
+
+    setPageCount(totalPaginas)
+    setOcorrencias(totalOcorrencias);
+  } catch (error) {
+    console.error('Erro ao obter ocorrências: ', error);
+  } finally {
+    setLoading(false);
+  }
+};
+
 
   useEffect(() => {
-    obterOcorrencias(statusSelecionado, filtroMap[filtroSelecionado], busca, currentPage);
+    if (orgaoSlug) obterOcorrencias(statusSelecionado, filtroMap[filtroSelecionado], busca, currentPage);
   }, [currentPage, orgaoSlug]);
 
   return (
