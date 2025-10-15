@@ -33,7 +33,7 @@ function HomePage() {
     setLoading(true);
 
     const [demandasRetornadas, ocorrenciasRetornadas] = await Promise.all([
-      fetchObterDemandasPorFiltros(orgaoSlug, setores, status, filtro, valor, page),
+      fetchObterDemandasPorFiltros(orgaoSlug, setores, status === 'Solicitado' ? 'Em Aberto' : status, filtro, valor, page),
       fetchOcorrenciasPorFiltros(status, filtro, valor, page)
     ]);
     
