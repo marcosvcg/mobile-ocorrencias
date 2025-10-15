@@ -36,15 +36,15 @@ function HomePage() {
       fetchObterDemandasPorFiltros(orgaoSlug, setores, status === 'Solicitado' ? 'Em Aberto' : status, filtro, valor, page),
       fetchOcorrenciasPorFiltros(status, filtro, valor, page)
     ]);
-    
-    const totalPaginas = (demandasRetornadas.total_pages + ocorrenciasRetornadas.total_pages);
 
-    const demandasMapeadas = demandasRetornadas.results.map(DataMapper.mapDemandaAtendenteToView);
-    const ocorrenciasMapeadas = ocorrenciasRetornadas.results.map(DataMapper.mapOcorrenciaToView);
+    const demandasMapeadas = (demandasRetornadas?.results ?? []).map(DataMapper.mapDemandaAtendenteToView);
+    const ocorrenciasMapeadas = (ocorrenciasRetornadas?.results ?? []).map(DataMapper.mapOcorrenciaToView);
 
     const totalOcorrencias = [...demandasMapeadas, ...ocorrenciasMapeadas].sort(
       (a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime()
     );
+    
+    const totalPaginas = Math.ceil(totalOcorrencias.length / 10.0);
 
     setPageCount(totalPaginas)
     setOcorrencias(totalOcorrencias);
@@ -54,7 +54,6 @@ function HomePage() {
     setLoading(false);
   }
 };
-
 
   useEffect(() => {
     if (orgaoSlug) obterOcorrencias(statusSelecionado, filtroMap[filtroSelecionado], busca, currentPage);
