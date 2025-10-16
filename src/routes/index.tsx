@@ -1,22 +1,36 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Outlet } from "react-router-dom";
+import { useAuth } from "../util/AuthProvider";
 import HomePage from "../pages/home/HomePage";
 import OcorrenciaPage from "../pages/ocorrencia/OcorrenciaPage";
 import Callback from "../util/Callback";
-import { useAuth } from "../util/AuthProvider";
 import Spinner from "../components/Spinner";
 
-const AppRoutes = () => {
-  const { authLoaded } = useAuth();
+const ProtectedRoutes = () => {
+  const { isAuthenticated, authLoaded } = useAuth();
 
   if (!authLoaded) return <Spinner />;
 
+  if (!isAuthenticated) {
+    window.location.href = import.meta.env.VITE_SSO_LOGOUT;
+    return null;
+  }
+
+  return <Outlet />;
+};
+
+const AppRoutes = () => {
   return (
     <Routes>
-      <Route index element={<HomePage />} />
-      <Route path="/callback" element={<Callback />}/>
-      <Route path="/ocorrencia-digital/:identificador" element={<OcorrenciaPage />} />
-      <Route path="/ocorrencia/:protocolo" element={<> <p>teste</p> </>} />
-      <Route path="*" element={<HomePage />} />
+      {/* Rotas públicas */}
+      <Route path="/callback" element={<Callback />} />
+
+      {/* Rotas protegidas */}
+      <Route element={<ProtectedRoutes />}>
+        <Route index element={<HomePage />} />
+        <Route path="/ocorrencia-digital/:identificador" element={<OcorrenciaPage />} />
+        <Route path="/ocorrencia/:protocolo" element={<p>teste</p>} />
+        <Route path="*" element={<HomePage />} />
+      </Route>
     </Routes>
   );
 };
