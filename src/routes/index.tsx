@@ -2,6 +2,7 @@ import { Routes, Route, Outlet } from "react-router-dom";
 import { useAuth } from "../util/AuthProvider";
 import HomePage from "../pages/home/HomePage";
 import OcorrenciaPage from "../pages/ocorrencia/OcorrenciaPage";
+import DemandaPage from "../pages/demanda/DemandaPage";
 import Callback from "../util/Callback";
 import Spinner from "../components/Spinner";
 
@@ -28,7 +29,7 @@ const AppRoutes = () => {
       <Route element={<ProtectedRoutes />}>
         <Route index element={<HomePage />} />
         <Route path="/ocorrencia-digital/:identificador" element={<OcorrenciaPage />} />
-        <Route path="/ocorrencia/:protocolo" element={<p>teste</p>} />
+        <Route path="/ocorrencia/:protocolo" element={<DemandaPage />} />
         <Route path="*" element={<HomePage />} />
       </Route>
     </Routes>
