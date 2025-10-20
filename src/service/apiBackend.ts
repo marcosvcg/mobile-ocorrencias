@@ -77,3 +77,13 @@ export async function fetchObterDemandasPorFiltros(
         return "Não encontrado.";
     }
 }
+
+export async function fetchObterDetalhesDemanda(protocolo: string) {
+    const body = { protocolo };
+    try {
+        const response = await apiBackend.post(`/obter-demanda`, body);
+        return response.data;
+    } catch (error) {
+        return "Não encontrado.";
+    }
+}
