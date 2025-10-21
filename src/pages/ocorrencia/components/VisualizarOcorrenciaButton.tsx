@@ -1,6 +1,6 @@
 import type { Ocorrencia } from "../../../models/Ocorrencia";
-import ScrollTextIcon from "./icons/ScrollTextIcon";
 import { useState } from "react";
+import ScrollTextIcon from "../../../assets/icons/ScrollTextIcon";
 import VisualizarOcorrenciaModal from "./modals/VisualizarOcorrencia/VisualizarOcorrenciaModal";
 import "./css/VisualizarOcorrenciaButton.css";
 

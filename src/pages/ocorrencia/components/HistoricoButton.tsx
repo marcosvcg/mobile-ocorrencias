@@ -1,8 +1,8 @@
 import type { Ocorrencia } from "../../../models/Ocorrencia";
-import ClockIcon from "./icons/ClockIcon";
-import "./css/HistoricoButton.css";
-import HistoricoModal from "./modals/Historico/HistoricoModal";
 import { useState } from "react";
+import ClockIcon from "../../../assets/icons/ClockIcon";
+import HistoricoModal from "./modals/Historico/HistoricoModal";
+import "./css/HistoricoButton.css";
 
 interface Props {
   ocorrencia: Ocorrencia;

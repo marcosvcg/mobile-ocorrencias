@@ -3,7 +3,7 @@ import type { Tramitacoes } from "../../../models/Tramitacoes";
 import { useState } from "react";
 import RegistrosModal from "./modals/Registros/RegistrosModal";
 import EnviarFotosModal from "./modals/Registros/EnviarFotosModal";
-import CameraIcon from "./icons/CameraIcon";
+import CameraIcon from "../../../assets/icons/CameraIcon";
 import "./css/RegistrosButton.css";
 
 interface Props {

@@ -1,8 +1,8 @@
 import type { Ocorrencia } from "../../../models/Ocorrencia";
-import FileSearchIcon from "./icons/FileSearchIcon";
-import "./css/EvidenciasButton.css";
 import { useState } from "react";
+import FileSearchIcon from "../../../assets/icons/FileSearchIcon";
 import EvidenciasModal from "./modals/Evidencias/EvidenciasModal";
+import "./css/EvidenciasButton.css";
 
 interface Props {
   ocorrencia: Ocorrencia;

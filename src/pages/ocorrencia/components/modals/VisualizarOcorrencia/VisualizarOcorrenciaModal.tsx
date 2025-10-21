@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import DOMPurify from "dompurify";
 import ImprimirPDF from "../../../../../util/ImprimirPDF";
 import "./css/VisualizarOcorrenciaModal.css";
-import PrinterIcon from "../../icons/PrinterIcon";
+import PrinterIcon from "../../../../../assets/icons/PrinterIcon";
 
 interface Props {
   ocorrencia: Ocorrencia;

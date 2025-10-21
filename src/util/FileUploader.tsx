@@ -1,6 +1,6 @@
 import { fetchEnviarAnexoInterno } from "../service/apiForms";
 import React, { useRef, useState } from "react";
-import TrashIcon from "../pages/ocorrencia/components/icons/TrashIcon";
+import TrashIcon from "../assets/icons/TrashIcon";
 import "./FileUploader.css";
 
 interface FileUploaderProps {
