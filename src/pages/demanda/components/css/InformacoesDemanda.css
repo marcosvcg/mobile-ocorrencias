@@ -1,0 +1,14 @@
+.informacoes-demanda {
+  background: white;
+  width: 90%;
+  padding: 4vw;
+  margin-top: 6vw;
+  margin-right: auto;
+  margin-left: auto;
+  box-shadow: 0px 4px 5px rgba(0,0,0,0.4);
+}
+
+.informacoes-demanda h3 {
+    text-align: center;
+    margin-bottom: 2vw;
+}

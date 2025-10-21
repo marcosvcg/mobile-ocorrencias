@@ -1,4 +1,66 @@
-// interface que sera usada para obter os dados da solicitacao
+// interface que sera usada para obter os dados da solicitacao (atraves do Metabase)
+
+export interface AtendenteDemanda {
+  id: number;
+  protocolo: string;
+  conteudo: string;
+  servico_titulo: string;
+  endereco: {
+    cep: string;
+    logradouro: string;
+    numero: string;
+    complemento: string | null;
+    bairro: string;
+    cidade: string;
+    estado: string;
+  };
+
+  requerente: {
+    cpf: string;
+    nome: string;
+  };
+
+  status: string;
+  historico: [
+    {
+      created_at: string;
+      ordem: number;
+      descricao: string;
+      status: string;
+      setor: string;
+      orgao_nome: string;
+      comentario_interno: string | null;
+      atendente_nome: string | null;
+    }
+  ];
+
+  evidencias: [
+    {
+      titulo: string;
+      arquivo: string;
+    }
+  ] | null;
+
+  registros: [
+    {
+      titulo: string;
+      arquivo: string;
+    }
+  ] | null;
+
+  restituicoes: [
+    {
+      titulo: string;
+      arquivo: string;
+    }
+  ] | null;
+}
+
+
+
+
+
+/* interface obtida via api do 156
 
 export interface AtendenteDemanda {
   id: number; // esse id nao eh um UUID, passar o id de DemandaAtendente como identificador
@@ -76,3 +138,4 @@ export interface AtendenteDemanda {
 
   [key: string]: any;
 }
+*/
