@@ -47,8 +47,8 @@ function DemandaPage() {
           <div className="botoes-demanda-container">
             <VisualizarDemandaButton demanda={demanda} />
             <HistoricoButton demanda={demanda} />
-            <RegistrosButton demanda={demanda} />
             <EvidenciasButton demanda={demanda} />
+            <RegistrosButton demanda={demanda} />
           </div>
         </>
       )}
