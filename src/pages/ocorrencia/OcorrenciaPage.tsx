@@ -90,9 +90,9 @@ function OcorrenciaPage() {
           )}
 
           <div className="botoes-ocorrencia-container">
+            <VisualizarOcorrenciaButton ocorrencia={ocorrencia} />
             <HistoricoButton ocorrencia={ocorrencia} />
             <RegistrosButton ocorrencia={ocorrencia} tramitacao={tramitacao} />
-            <VisualizarOcorrenciaButton ocorrencia={ocorrencia} />
             <EvidenciasButton ocorrencia={ocorrencia} />
           </div>
         </>
