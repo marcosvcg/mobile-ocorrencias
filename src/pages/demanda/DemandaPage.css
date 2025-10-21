@@ -1,0 +1,7 @@
+.botoes-demanda-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 4vh;
+    padding-bottom: 5vh;
+}

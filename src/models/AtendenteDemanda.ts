@@ -39,14 +39,14 @@ export interface AtendenteDemanda {
       titulo: string;
       arquivo: string;
     }
-  ] | null;
+  ];
 
   registros: [
     {
       titulo: string;
       arquivo: string;
     }
-  ] | null;
+  ];
 
   restituicoes: [
     {

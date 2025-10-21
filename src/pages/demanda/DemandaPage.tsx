@@ -1,12 +1,16 @@
 import type { AtendenteDemanda } from "../../models/AtendenteDemanda";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { fetchObterDetalhesDemanda } from "../../service/apiBackend";
 import NavBar from "../../components/NavBar";
 import Spinner from "../../components/Spinner";
-import "./DemandaPage.css";
 import InformacoesDemanda from "./components/InformacoesDemanda";
-import { fetchObterDetalhesDemanda } from "../../service/apiBackend";
 import ExecutarButton from "./components/ExecutarButton";
+import VisualizarDemandaButton from "./components/VisualizarDemandaButton";
+import "./DemandaPage.css";
+import HistoricoButton from "./components/HistoricoButton";
+import RegistrosButton from "./components/RegistrosButton";
+import EvidenciasButton from "./components/EvidenciasButton";
 
 function DemandaPage() {
   const [demanda, setDemanda] = useState<AtendenteDemanda>();
@@ -21,7 +25,6 @@ function DemandaPage() {
       try {
         const demandaData = await fetchObterDetalhesDemanda(protocolo);
         setDemanda(demandaData);
-
       } finally {
         setLoading(false);
       }
@@ -37,9 +40,16 @@ function DemandaPage() {
 
       {!loading && demanda && (
         <>
-            <InformacoesDemanda demanda={demanda}/>
+          <InformacoesDemanda demanda={demanda} />
 
-            <ExecutarButton demanda={demanda}/>
+          <ExecutarButton demanda={demanda} />
+
+          <div className="botoes-demanda-container">
+            <VisualizarDemandaButton demanda={demanda} />
+            <HistoricoButton demanda={demanda} />
+            <RegistrosButton demanda={demanda} />
+            <EvidenciasButton demanda={demanda} />
+          </div>
         </>
       )}
     </>
