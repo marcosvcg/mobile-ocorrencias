@@ -1,5 +1,7 @@
 import type { AtendenteDemanda } from "../../../models/AtendenteDemanda";
+import { useState } from "react";
 import ScrollTextIcon from "../../../assets/icons/ScrollTextIcon";
+import VisualizarDemandaModal from "./modals/VisualizarDemanda/VisualizarDemandaModal";
 import "./css/VisualizarDemandaButton.css";
 
 interface Props {
@@ -7,19 +9,18 @@ interface Props {
 }
 
 const VisualizarDemandaButton = ({ demanda }: Props) => {
-  const endereco = `${demanda.endereco.logradouro}, ${demanda.endereco.bairro}, ${demanda.endereco.numero} - ${demanda.endereco.cidade} - ${demanda.endereco.estado} - CEP: ${demanda.endereco.cep}`;
+  const [modalOpen, setModalOpen] = useState(false);
 
   return (
     <>
       <button
         className="visualizar-demanda-button"
-        onClick={() => alert(`
-          Conteúdo da Demanda: ${demanda.conteudo}
-          Endereço: ${endereco}
-          `)}
+        onClick={() => setModalOpen(true)}
       >
         <span>Visualizar{"\n"}Demanda</span> <ScrollTextIcon />
       </button>
+
+      {modalOpen && (<VisualizarDemandaModal onClose={() => setModalOpen(false)} demanda={demanda} /> )}
     </>
   );
 };
