@@ -3,15 +3,11 @@ import React, { useRef, useState } from "react";
 import TrashIcon from "../assets/icons/TrashIcon";
 import "./FileUploader.css";
 
-interface FileUploaderProps {
-    identificadorSolicitacao: string;
-    assunto: string;
-    descricao: string;
-    solicitacao: number;
+interface FileUploaderDemandaProps {
+    demanda: number;
 }
 
-const FileUploader: React.FC<FileUploaderProps> = ({ 
-    identificadorSolicitacao, assunto, descricao, solicitacao }) => {
+const FileUploaderDemanda: React.FC<FileUploaderDemandaProps> = ({ demanda }) => {
     const [files, setFiles] = useState<File[]>([]);
     const [isUploading, setIsUploading] = useState(false);
     const fileInputRef = useRef<HTMLInputElement | null>(null);
@@ -41,12 +37,13 @@ const FileUploader: React.FC<FileUploaderProps> = ({
         for (const file of files) {
             const formData = new FormData();
 
-            formData.append("assunto", assunto);
-            formData.append("descricao", descricao);
+            formData.append("titulo", file.name);
+            formData.append("demanda", demanda.toString());
             formData.append("arquivo", file);
-            formData.append("solicitacao", solicitacao.toString());
 
-            await fetchEnviarAnexoInterno(identificadorSolicitacao, formData);
+            // realizar a requisicao p/ enviar arquivo aqui!
+            //
+            // await fetchEnviarAnexoInterno(identificadorSolicitacao, formData);
         }
         window.location.reload();
         setIsUploading(false);
@@ -94,4 +91,4 @@ const FileUploader: React.FC<FileUploaderProps> = ({
     );
 };
 
-export default FileUploader;
+export default FileUploaderDemanda;

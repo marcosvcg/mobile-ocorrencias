@@ -1,17 +1,13 @@
-import FileUploaderOcorrencia from "../../../../../util/FileUploaderOcorrencia";
+import FileUploaderDemanda from "../../../../../util/FileUploaderDemanda";
 import "../../../../../util/Swiper.css";
 import "./css/EnviarFotosModal.css";
 
 interface Props {
   onClose: () => void;
-  identificadorSolicitacao: string;
-  assunto: string;
-  descricao: string;
-  solicitacao: number;
+  demanda: number;
 }
 
-const EnviarFotosModal = ({
-  onClose, identificadorSolicitacao, assunto, descricao, solicitacao }: Props) => {
+const EnviarFotosModal = ({ onClose, demanda }: Props) => {
 
   return (
     <>
@@ -25,11 +21,8 @@ const EnviarFotosModal = ({
           </div>
 
           <div className="enviar-fotos-modal-content">
-            <FileUploaderOcorrencia
-              identificadorSolicitacao={identificadorSolicitacao}
-              assunto={assunto}
-              descricao={descricao}
-              solicitacao={solicitacao} />
+            <FileUploaderDemanda
+              demanda={demanda} />
           </div>
         </div>
       </div>
