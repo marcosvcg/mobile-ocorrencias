@@ -1,0 +1,59 @@
+.historico-modal-container {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.historico-modal {
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  border-radius: 5px;
+  width: 90%;
+  max-height: 95vh;
+  overflow: hidden;
+}
+
+.historico-modal-header {
+  background-color: #0077ff;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  border-bottom: 1px solid #ccc;
+}
+
+.historico-titulo {
+  color: #ffffff;
+  width: fit-content;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  flex: 1;
+  text-align: center;
+  margin-top: 0.5rem;
+}
+
+.historico-close {
+  color: #ffffff;
+  font-size: 2.5rem;
+  line-height: 1;
+  padding-bottom: 1px;
+}
+
+.historico-modal-content {
+  background-color: #ffffff;
+  overflow-y: auto;
+  flex: 1;
+  padding: 1rem;
+}
