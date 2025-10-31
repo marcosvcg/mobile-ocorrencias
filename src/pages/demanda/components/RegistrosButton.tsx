@@ -17,7 +17,6 @@ const RegistrosButton = ({ demanda }: Props) => {
     <>
       <button
         className="registros-button"
-        disabled={demanda.status === "Concluído"}
         onClick={() => setModalOpen(true)}
       >
         <span>Registros</span> <CameraIcon />
