@@ -68,7 +68,7 @@ const HistoricoTableItem = ({ ocorrencia, ordem }: Props) => {
             style={{
               height: "4vh",
               border: "none",
-              backgroundColor: "#ffffff",
+              backgroundColor: "#ecf2fc",
             }}
           ></td>
         </tr>
