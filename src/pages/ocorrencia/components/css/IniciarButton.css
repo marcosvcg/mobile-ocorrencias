@@ -19,6 +19,7 @@
 
 .iniciar-button span {
   font-size: 1.3rem;
+  font-weight: 600;
 }
 
 .iniciar-button:disabled {
