@@ -1,4 +1,4 @@
-.registros-fotos {
+.registros-demanda-fotos {
   display: block;
   margin: auto;
   width: 100%;
@@ -8,7 +8,7 @@
   background-color: #f7f7f7;
 }
 
-.registros-modal-container {
+.registros-demanda-modal-container {
   display: flex;
   flex-direction: column;
   position: fixed;
@@ -24,7 +24,7 @@
   z-index: 999;
 }
 
-.registros-modal-content {
+.registros-demanda-modal-content {
   display: flex;
   width: 100%;
   height: 100%;
@@ -33,7 +33,7 @@
   background-color: #ffffff;
 }
 
-.registros-modal {
+.registros-demanda-modal {
   display: flex;
   flex-direction: column;
   border-radius: 5px;
@@ -43,7 +43,7 @@
   overflow: hidden;
 }
 
-.registros-modal-header {
+.registros-demanda-modal-header {
   background-color: #0077ff;
   position: sticky;
   top: 0;
@@ -55,7 +55,7 @@
   border-bottom: 1px solid #ccc;
 }
 
-.registros-titulo {
+.registros-demanda-titulo {
   color: #ffffff;
   width: fit-content;
   font-family: Arial, Helvetica, sans-serif;
@@ -65,7 +65,7 @@
   text-align: center;
 }
 
-.registros-close {
+.registros-demanda-close {
   color: #ffffff;
   font-size: 2.5rem;
   line-height: 1;
@@ -73,12 +73,12 @@
   margin-left: auto;
 }
 
-.registros-nenhum-registro {
+.registros-demanda-nenhum-registro {
     font-size: 1.3rem;
     font-family: Arial, Helvetica, sans-serif;
 }
 
-.registros-enviar-fotos-div {
+.registros-demanda-enviar-fotos-div {
     display: flex;
     width: 100%;
     justify-content: center;
@@ -86,7 +86,7 @@
     margin-top: 1.2rem;
 }
 
-.registros-button-enviar-fotos {
+.registros-demanda-button-enviar-fotos {
   width: 50%;
   padding: 1rem;
   background-color: rgb(0, 95, 255);

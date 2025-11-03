@@ -14,11 +14,11 @@ const RegistrosModal = ({ demanda, onClose, onEnviarFotos }: Props) => {
 
   return (
     <>
-      <div className="registros-modal-container">
-        <div className="registros-modal">
-          <div className="registros-modal-header">
-            <span className="registros-titulo">Registros Internos</span>
-            <p className="registros-close" onClick={() => onClose()}>
+      <div className="registros-demanda-modal-container">
+        <div className="registros-demanda-modal">
+          <div className="registros-demanda-modal-header">
+            <span className="registros-demanda-titulo">Registros Internos</span>
+            <p className="registros-demanda-close" onClick={() => onClose()}>
               &times;
             </p>
           </div>
@@ -33,13 +33,13 @@ const RegistrosModal = ({ demanda, onClose, onEnviarFotos }: Props) => {
             autoHeight={true}
             pagination={{ clickable: true }}
           >
-            <div className="registros-modal-content">
+            <div className="registros-demanda-modal-content">
               {demanda.registros.at(0) === undefined // validar essa logica depois!
-                ? <span className="registros-nenhum-registro">Nenhum registro enviado.</span>
+                ? <span className="registros-demanda-nenhum-registro">Nenhum registro enviado.</span>
                 : demanda.registros.map((registro, index) => (
                   <>
                     <SwiperSlide key={index}>
-                      <img className="registros-fotos" src={import.meta.env.VITE_API_OUVIDORIA + registro.arquivo} alt={registro.titulo} />
+                      <img className="registros-demanda-fotos" src={import.meta.env.VITE_API_OUVIDORIA + registro.arquivo} alt={registro.titulo} />
                     </SwiperSlide>
                     <div className="swiper-pagination"></div>
                   </>
@@ -47,9 +47,9 @@ const RegistrosModal = ({ demanda, onClose, onEnviarFotos }: Props) => {
             </div>
           </Swiper>
         </div>
-        <div className="registros-enviar-fotos-div">
+        <div className="registros-demanda-enviar-fotos-div">
           {demanda.status !== "Concluído" && (
-            <button className="registros-button-enviar-fotos"
+            <button className="registros-demanda-button-enviar-fotos"
               onClick={onEnviarFotos}
             >Enviar Fotos
             </button>

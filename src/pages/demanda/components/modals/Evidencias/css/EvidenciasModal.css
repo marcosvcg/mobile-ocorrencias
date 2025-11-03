@@ -1,4 +1,4 @@
-.evidencias-fotos {
+.evidencias-demandas-fotos {
   display: block;
   margin: auto;
   width: 100%;
@@ -8,7 +8,7 @@
   background-color: #f7f7f7;
 }
 
-.evidencias-modal-container {
+.evidencias-demandas-modal-container {
   position: fixed;
   left: 0;
   top: 0;
@@ -22,7 +22,7 @@
   z-index: 999;
 }
 
-.evidencias-modal {
+.evidencias-demandas-modal {
   display: flex;
   flex-direction: column;
   border-radius: 5px;
@@ -32,7 +32,7 @@
   overflow: hidden;
 }
 
-.evidencias-modal-content {
+.evidencias-demandas-modal-content {
   display: flex;
   width: 100%;
   height: 100%;
@@ -42,7 +42,7 @@
 }
 
 
-.evidencias-modal-header {
+.evidencias-demandas-modal-header {
   background-color: #0077ff;
   position: sticky;
   top: 0;
@@ -54,7 +54,7 @@
   border-bottom: 1px solid #ccc;
 }
 
-.evidencias-titulo {
+.evidencias-demandas-titulo {
   color: #ffffff;
   width: fit-content;
   font-family: Arial, Helvetica, sans-serif;
@@ -64,7 +64,7 @@
   text-align: center;
 }
 
-.evidencias-close {
+.evidencias-demandas-close {
   color: #ffffff;
   font-size: 2.5rem;
   line-height: 1;
@@ -72,7 +72,7 @@
   margin-left: auto;
 }
 
-.evidencias-pdf {
+.evidencias-demandas-pdf {
   position: absolute;
   width: 100%;
 }

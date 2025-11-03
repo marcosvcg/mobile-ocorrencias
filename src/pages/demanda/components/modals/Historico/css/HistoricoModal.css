@@ -1,4 +1,4 @@
-.historico-modal-container {
+.historico-demanda-modal-container {
   position: fixed;
   left: 0;
   top: 0;
@@ -11,7 +11,7 @@
   z-index: 999;
 }
 
-.historico-modal {
+.historico-demanda-modal {
   display: flex;
   flex-direction: column;
   background-color: #ffffff;
@@ -21,7 +21,7 @@
   overflow: hidden;
 }
 
-.historico-modal-header {
+.historico-demanda-modal-header {
   background-color: #0077ff;
   position: sticky;
   top: 0;
@@ -33,7 +33,7 @@
   border-bottom: 1px solid #ccc;
 }
 
-.historico-titulo {
+.historico-demanda-titulo {
   color: #ffffff;
   width: fit-content;
   font-family: Arial, Helvetica, sans-serif;
@@ -44,14 +44,14 @@
   margin-top: 0.5rem;
 }
 
-.historico-close {
+.historico-demanda-close {
   color: #ffffff;
   font-size: 2.5rem;
   line-height: 1;
   padding-bottom: 1px;
 }
 
-.historico-modal-content {
+.historico-demanda-modal-content {
   background-color: #ffffff;
   overflow-y: auto;
   flex: 1;

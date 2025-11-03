@@ -8,8 +8,8 @@ interface Props {
 
 const HistoricoTable = ({ demanda }: Props) => {
   return (
-    <table className="historico-table">
-      <tbody className="historico-table-header">
+    <table className="historico-demanda-table">
+      <tbody className="historico-demanda-table-header">
           {demanda.historico.map((_, ordem) => (
           <HistoricoTableItem
             key={`${demanda.id}-${ordem}`}

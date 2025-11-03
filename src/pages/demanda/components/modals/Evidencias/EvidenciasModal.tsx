@@ -11,11 +11,11 @@ interface Props {
 
 const EvidenciasModal = ({ onClose, demanda }: Props) => {
   return (
-    <div className="evidencias-modal-container">
-      <div className="evidencias-modal">
-        <div className="evidencias-modal-header">
-          <span className="evidencias-titulo">Evidências</span>
-          <p className="evidencias-close" onClick={() => onClose()}>
+    <div className="evidencias-demandas-modal-container">
+      <div className="evidencias-demandas-modal">
+        <div className="evidencias-demandas-modal-header">
+          <span className="evidencias-demandas-titulo">Evidências</span>
+          <p className="evidencias-demandas-close" onClick={() => onClose()}>
             &times;
           </p>
         </div>
@@ -30,11 +30,11 @@ const EvidenciasModal = ({ onClose, demanda }: Props) => {
           autoHeight={true}
           pagination={{ clickable: true }}
         >
-          <div className="evidencias-modal-content">
+          <div className="evidencias-demandas-modal-content">
             {demanda.evidencias && demanda.evidencias.map((evidencia, index) => (
               <>
               <SwiperSlide key={index}>
-                <img className="evidencias-fotos" src={import.meta.env.VITE_API_OUVIDORIA + evidencia.arquivo} alt={evidencia.titulo} />
+                <img className="evidencias-demandas-fotos" src={import.meta.env.VITE_API_OUVIDORIA + evidencia.arquivo} alt={evidencia.titulo} />
                 {(evidencia.arquivo.includes(".pdf")) && (
                   <a className="baixar-pdf" href={import.meta.env.VITE_API_OUVIDORIA + evidencia.arquivo}>Baixar PDF</a>
                 )}

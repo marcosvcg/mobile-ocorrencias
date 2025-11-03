@@ -9,13 +9,13 @@ interface Props {
 
 const HistoricoModal = ({ onClose, demanda }: Props) => {
   return (
-    <div className="historico-modal-container">
-      <div className="historico-modal">
-        <div className="historico-modal-header">
-          <span className="historico-titulo">Histórico da Demanda</span>
-          <p className="historico-close" onClick={() => onClose()}>&times;</p>
+    <div className="historico-demanda-modal-container">
+      <div className="historico-demanda-modal">
+        <div className="historico-demanda-modal-header">
+          <span className="historico-demanda-titulo">Histórico da Demanda</span>
+          <p className="historico-demanda-close" onClick={() => onClose()}>&times;</p>
         </div>
-        <div className="historico-modal-content">
+        <div className="historico-demanda-modal-content">
           <HistoricoTable demanda={demanda} />
         </div>
       </div>
