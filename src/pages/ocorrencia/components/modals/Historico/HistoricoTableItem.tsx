@@ -61,15 +61,18 @@ const HistoricoTableItem = ({ ocorrencia, ordem }: Props) => {
         <th>Descrição:</th>
         <td>{ocorrencia.historico[ordem].descricao}</td>
       </tr>
-      <tr>
-        <td // espacamento no final!
-          style={{
-            height: "4vh",
-            border: "none",
-            backgroundColor: "#ecf2fc"
-          }}
-        ></td>
-      </tr>
+
+      {ordem + 1 !== ocorrencia.historico.length && (
+        <tr>
+          <td // espacamento no final!
+            style={{
+              height: "4vh",
+              border: "none",
+              backgroundColor: "#ffffff",
+            }}
+          ></td>
+        </tr>
+      )}
     </>
   );
 };
