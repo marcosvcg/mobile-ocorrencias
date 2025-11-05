@@ -50,8 +50,10 @@ export interface AtendenteDemanda {
 
   restituicoes: [
     {
-      titulo: string;
-      arquivo: string;
+      anexos: {
+        titulo: string;
+        arquivo: string;
+      }[];
     }
   ] | null;
 }

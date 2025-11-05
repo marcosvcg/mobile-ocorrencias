@@ -1,6 +1,7 @@
 import type { AtendenteDemanda } from "../../../../../models/AtendenteDemanda";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
+import { Fragment } from "react"
 import "../../../../../util/Swiper.css";
 import "./css/EvidenciasModal.css";
 
@@ -42,7 +43,20 @@ const EvidenciasModal = ({ onClose, demanda }: Props) => {
               <div className="swiper-pagination"></div>
               </>
             ))}
+
+            {demanda.restituicoes && demanda.restituicoes.map((restituicao, index) => (
+              // evidencias da restituicao         
+              <Fragment key={index}>
+                {restituicao.anexos.map((anexo, idx) => (
+                  <SwiperSlide key={idx}>
+                    <img className="evidencias-demandas-fotos" src={import.meta.env.VITE_API_OUVIDORIA + anexo.arquivo} alt={anexo.titulo} />
+                  </SwiperSlide>
+                ))}
+              <div className="swiper-pagination"></div>
+            </Fragment>
+            ))}
           </div>
+
         </Swiper>
       </div>
     </div>
