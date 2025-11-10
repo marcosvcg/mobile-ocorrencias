@@ -20,7 +20,7 @@ const ExecutarButton = ({ demanda }: Props) => {
         <span>Executar</span>
       </button>
 
-      {modalOpen && <ExecutarModal onClose={() => setModalOpen(false)} onSalvar={() => setModalOpen(false)} demanda={demanda} />}
+      {modalOpen && <ExecutarModal onClose={() => setModalOpen(false)} demanda={demanda} />}
     </>
   );
 };

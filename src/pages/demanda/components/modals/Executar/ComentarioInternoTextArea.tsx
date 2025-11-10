@@ -1,21 +1,23 @@
-import { useState } from "react";
 import "./css/ComentarioInternoTextArea.css";
 
-const ComentarioInternoTextArea = () => {
-    const [comentarioInterno, setComentarioInterno] = useState('');
+interface Props {
+  value: string;
+  onChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
+}
+
+const ComentarioInternoTextArea = ({ value, onChange }: Props) => {
 
     return (
         <label className="comentario-interno-label">
-        Comentário Interno
+        Comentário Interno:
         <textarea
           name="comentario-interno"
           className="comentario-interno-textarea"
-          value={comentarioInterno}
-          onChange={(e) => setComentarioInterno(e.target.value)}
+          value={value}
+          onChange={onChange}
           placeholder="Adicione uma observação (somente para uso interno)"
           rows={5}
           style={{ width: "100%" }}
-          required
         />
       </label>
     )

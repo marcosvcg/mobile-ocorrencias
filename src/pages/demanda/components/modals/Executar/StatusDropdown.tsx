@@ -1,9 +1,13 @@
 import { useState } from "react";
 import "./css/StatusDropdown.css";
 
-const StatusDropdown = () => {
+interface Props {
+  value: string;
+  onChange: (value: string) => void;
+}
+
+const StatusDropdown = ({ value, onChange }: Props) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [statusSelecionado, setStatusSelecionado] = useState("Selecione");
 
   const options = [
     "Selecione",
@@ -17,17 +21,17 @@ const StatusDropdown = () => {
   const toggleDropdown = () => setIsOpen(!isOpen);
 
   const handleSelecionarStatus = (option: string) => {
-    setStatusSelecionado(option);
+    onChange(option);
     setIsOpen(false);
   };
 
   return (
     <div className="status-dropdown" onMouseLeave={() => setIsOpen(false)}>
         <div className="status-dropdown-container">
-            <span className="status-dropdown-titulo">Status</span>
+            <span className="status-dropdown-titulo">Status:</span>
         <div className="status-dropdown-button" onClick={toggleDropdown}>
             <span>
-            {statusSelecionado}
+            {value}
             </span>
             <span className="arrow">{isOpen ? "▲" : "▼"}</span>
         </div>
@@ -48,6 +52,13 @@ const StatusDropdown = () => {
           ))}
         </ul>
       )}
+
+      <input
+        type="hidden"
+        name="status"
+        value={value}
+        required
+      />
     </div>
   );
 };

@@ -1,17 +1,20 @@
-import { useState } from "react";
 import "./css/DescricaoTextArea.css";
 
-const DescricaoTextArea = () => {
-    const [descricao, setDescricao] = useState('');
+interface Props {
+  value: string;
+  onChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
+}
+
+const DescricaoTextArea = ({ value, onChange }: Props) => {
 
     return (
         <label className="descricao-label">
-        Descrição
+        Descrição:<span style={{color: "#FF0000"}}>*</span>
         <textarea
           name="descricao"
           className="descricao-textarea"
-          value={descricao}
-          onChange={(e) => setDescricao(e.target.value)}
+          value={value}
+          onChange={onChange}
           placeholder="Descrição do status atual (informação disponibilizada para o cidadão)"
           rows={5}
           style={{ width: "100%" }}
