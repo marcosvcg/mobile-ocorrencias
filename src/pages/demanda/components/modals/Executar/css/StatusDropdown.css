@@ -11,7 +11,7 @@
 .status-dropdown-button {
   width: 100%;
   padding: 8px;
-  background-color: white;
+  background-color: #ffffff;
   border: 1px solid #999999;
   border-radius: 4px;
   font-size: 14px;
@@ -36,7 +36,7 @@
   transform: translateY(-2px);
   left: 0;
   width: 100%;
-  background-color: white;
+  background-color: #ffffff;
   border: 1px solid #999999;
   border-radius: 4px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
@@ -49,4 +49,8 @@
   color: #000;
   border: 0.2px solid #ccc;
   transition: background-color 0.2s ease;
+}
+
+.status-dropdown-titulo {
+    color: #000000;
 }

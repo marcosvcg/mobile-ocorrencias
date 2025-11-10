@@ -1,0 +1,27 @@
+.comentario-interno-textarea {
+  width: 100%;
+  padding: 5px 6px;
+  margin-top: 6px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-family: Arial, Helvetica, sans-serif;
+  resize: vertical;
+  min-height: 90px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.comentario-interno-textarea::placeholder {
+  color: #9b9b9b;
+  font-size: 0.9rem;
+}
+
+.comentario-interno-textarea:focus {
+  border-color: #0077ff;
+  box-shadow: 0 0 0 3px rgba(30, 144, 255, 0.2);
+  outline: none;
+}
+
+.comentario-interno-label {
+    color: #000000;
+}
