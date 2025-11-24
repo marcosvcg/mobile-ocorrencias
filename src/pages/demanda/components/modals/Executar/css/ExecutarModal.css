@@ -65,6 +65,7 @@
 
 .executar-modal-content-inputs {
   display: flex;
+  margin-bottom: calc(2vh + 8px);
   flex-direction: column;
   justify-content: space-between;
   gap: calc(2vh + 8px);
